@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalle Uday Bhaskar — Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #f5f5f5;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .resume-container {
+            max-width: 900px;
+            margin: 24px auto;
+            background: #fff;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+            color: #fff;
+            padding: 40px 48px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .header .subtitle {
+            color: #94a3b8;
+            margin-top: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .header .contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 14px;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .header .contacts a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .header .contacts a:hover {
+            text-decoration: underline;
+        }
+
+        .body {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            background: #f8fafc;
+            border-right: 1px solid #e2e8f0;
+            padding: 32px 24px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 32px 36px;
+        }
+
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #3b82f6;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 6px;
+            margin-bottom: 14px;
+        }
+
+        .sidebar .section-title {
+            color: #6366f1;
+            border-color: #6366f1;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 5px 0;
+            font-size: 13px;
+            color: #334155;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            font-size: 13px;
+        }
+
+        .project-item,
+        .cert-item,
+        .timeline-item {
+            margin-bottom: 16px;
+        }
+
+        .project-item h3,
+        .timeline-item h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .project-item p,
+        .timeline-item p,
+        .cert-item p {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        .project-item .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .project-item .tag {
+            background: #eff6ff;
+            color: #3b82f6;
+            padding: 2px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid #e2e8f0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        }
+
+        .timeline-item .year {
+            font-size: 12px;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            font-size: 13px;
+        }
+
+        .cert-bullet {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #3b82f6;
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .interest-tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .print-btn {
+            display: block;
+            margin: 24px auto;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+
+            .resume-container {
+                box-shadow: none;
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .print-btn {
+                display: none;
+            }
+
+            .sidebar {
+                background: #f8fafc;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            .header {
+                padding: 28px 24px;
+            }
+
+            .header .contacts {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .main-content {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resume-container">
+        <div class="header">
+            <h1>KALLE UDAY BHASKAR</h1>
+            <div class="subtitle">Aspiring IoT & VLSI Chip Design Engineer</div>
+            <div class="contacts">
+                <span>📍 Dharmavaram, 515671, AP, India</span>
+                <span>📞 +91 94401 00517</span>
+                <span>✉ <a href="mailto:udayvenkatkalle7@gmail.com">udayvenkatkalle7@gmail.com</a></span>
+                <span>🔗 <a href="https://linkedin.com/in/uday-bhaskar-kalle-25b904348"
+                        target="_blank">LinkedIn</a></span>
+            </div>
+        </div>
+
+        <div class="body">
+            <div class="sidebar">
+                <!-- Education -->
+                <div class="section">
+                    <div class="section-title">Education</div>
+                    <div class="timeline-item">
+                        <div class="year">Expected 2026</div>
+                        <h3>B.Tech — ECE</h3>
+                        <p>Kuppam Engineering College<br>GPA: 7.6</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">2022</div>
+                        <h3>Intermediate (XII)</h3>
+                        <p>Govt. Junior College, Dharmavaram<br>GPA: 59%</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">2020</div>
+                        <h3>SSC (X)</h3>
+                        <p>B.S.R Mpl High School, Dharmavaram<br>GPA: 7.7</p>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="section">
+                    <div class="section-title">Technical Skills</div>
+                    <ul class="skill-list">
+                        <li>Digital Electronics</li>
+                        <li>VLSI Design</li>
+                        <li>Soldering</li>
+                        <li>Embedded Systems</li>
+                        <li>PCB Design</li>
+                        <li>Arduino</li>
+                        <li>Circuit Design</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Programming</div>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>C</li>
+                        <li>Embedded C</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Software Tools</div>
+                    <ul class="skill-list">
+                        <li>Keil</li>
+                        <li>MATLAB</li>
+                        <li>Arduino IDE</li>
+                        <li>Proteus</li>
+                        <li>OrCAD</li>
+                        <li>ModelSim</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Languages</div>
+                    <ul class="skill-list">
+                        <li>Telugu</li>
+                        <li>English</li>
+                        <li>Hindi</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Interests</div>
+                    <div class="interest-tags">
+                        <span class="interest-tag">Reading</span>
+                        <span class="interest-tag">Gaming</span>
+                        <span class="interest-tag">Travelling</span>
+                        <span class="interest-tag">Music</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <!-- Professional Summary -->
+                <div class="section">
+                    <div class="section-title">Professional Summary</div>
+                    <p style="font-size: 13px; color: #475569;">
+                        An enthusiastic ECE fresher with strong motivation and leadership skills. Eager to learn
+                        emerging technologies and innovative methodologies in the field of electronics and
+                        communication. Always willing to explore and develop creative solutions that push the boundaries
+                        of current technology.
+                    </p>
+                </div>
+
+                <!-- Projects -->
+                <div class="section">
+                    <div class="section-title">Projects / Mini Projects</div>
+                    <div class="project-item">
+                        <h3>Smart Contactless Attendance System</h3>
+                        <p>Face-recognition based attendance using Husky Lens & ESP-32, logging data to Google Sheets
+                            via API.</p>
+                        <div class="tags"><span class="tag">ESP-32</span><span class="tag">HuskyLens</span><span
+                                class="tag">Google Sheets API</span></div>
+                    </div>
+                    <div class="project-item">
+                        <h3>Smart Door Unlocking System</h3>
+                        <p>IoT-enabled door lock with mobile notification when intruder detected, using Husky Lens &
+                            ESP-32.</p>
+                        <div class="tags"><span class="tag">ESP-32</span><span class="tag">HuskyLens</span><span
+                                class="tag">Bluetooth</span></div>
+                    </div>
+                    <div class="project-item">
+                        <h3>Water Level & Leak Alert System</h3>
+                        <p>Real-time water monitoring with SMS alerts using water sensor, ESP32, and SIM800L module.</p>
+                        <div class="tags"><span class="tag">ESP32</span><span class="tag">SIM800L</span><span
+                                class="tag">GSM</span></div>
+                    </div>
+                    <div class="project-item">
+                        <h3>Smart Blind Stick</h3>
+                        <p>Assistive navigation device with alert system using ESP32 and GSM module for visually
+                            impaired.</p>
+                        <div class="tags"><span class="tag">ESP32</span><span class="tag">GSM Module</span><span
+                                class="tag">Ultrasonic</span></div>
+                    </div>
+                    <div class="project-item">
+                        <h3>CSP: Chemicals on Produce</h3>
+                        <p>Community awareness project educating about harmful chemicals used on fruits and vegetables.
+                        </p>
+                        <div class="tags"><span class="tag">Community Service</span><span class="tag">Awareness</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Internship -->
+                <div class="section">
+                    <div class="section-title">Internship Experience</div>
+                    <div class="project-item">
+                        <h3>IoT Internship — APSCHE</h3>
+                        <p>Intern in Council for Skills and Competencies by APSCHE</p>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="section">
+                    <div class="section-title">Professional Courses & Certifications</div>
+                    <div class="cert-item"><span class="cert-bullet"></span>
+                        <div><strong>Computer Architecture</strong> — NPTEL</div>
+                    </div>
+                    <div class="cert-item"><span class="cert-bullet"></span>
+                        <div><strong>MongoDB Basics</strong> — MongoDB University</div>
+                    </div>
+                    <div class="cert-item"><span class="cert-bullet"></span>
+                        <div><strong>VLSI Design</strong> — NPTEL</div>
+                    </div>
+                    <div class="cert-item"><span class="cert-bullet"></span>
+                        <div><strong>AI on Jetson Nano</strong> — Nvidia</div>
+                    </div>
+                    <div class="cert-item"><span class="cert-bullet"></span>
+                        <div><strong>Networking & Storage Essentials</strong> — EDX</div>
+                    </div>
+                    <div class="cert-item"><span class="cert-bullet"></span>
+                        <div><strong>Matlab OnRamp</strong> — MathWorks</div>
+                    </div>
+                    <div class="cert-item"><span class="cert-bullet"></span>
+                        <div><strong>Introduction to IoT</strong> — NPTEL</div>
+                    </div>
+                </div>
+
+                <!-- Activities -->
+                <div class="section">
+                    <div class="section-title">Extra Curricular Activities</div>
+                    <ul style="font-size: 13px; color: #475569; padding-left: 16px;">
+                        <li>Participated and Organized College Events as a Volunteer</li>
+                        <li>Participated in college quiz programmes</li>
+                        <li>Participated in Project Expo at PSV college of engineering</li>
+                        <li style="font-weight: 600; color: #1e293b;">Participated in Smart India Hackathon & Won 🏆
+                        </li>
+                        <li>Participated in ISF activities</li>
+                    </ul>
+                </div>
+
+                <!-- Workshops -->
+                <div class="section">
+                    <div class="section-title">Workshops Attended</div>
+                    <ul style="font-size: 13px; color: #475569; padding-left: 16px;">
+                        <li>Workshops on PLD's</li>
+                        <li>Workshops on Generative AI</li>
+                        <li>Workshops on Python</li>
+                        <li>Workshop on Verilog Programming — MSME</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">
+        🖨️ Download as PDF (Ctrl+P)
+    </button>
+</body>
+
+</html>
