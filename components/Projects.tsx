@@ -130,6 +130,24 @@ const projects: Project[] = [
         "Fully responsive layout for mobile shoppers"
       ]
     }
+  },
+  {
+    id: 8,
+    title: "CSP Project",
+    description: "Conducted awareness activities on use of chemicals on fruits and vegetables in the community.",
+    tags: ["Community Service", "Awareness", "Research"],
+    gradient: "from-green-500/20 to-lime-500/20 dark:from-green-500/10 dark:to-lime-500/10",
+    icon: <Leaf className="w-8 h-8 text-green-500" />,
+    details: {
+      challenge: "Widespread concern about chemical residues on produce and lack of public knowledge on safe consumption practices.",
+      solution: "Organized community workshops and prepared educational material to explain the risks of various pesticides and demonstrate effective cleaning methods.",
+      results: [
+        "Reached 200+ local community members",
+        "Distributed safety guidelines in regional language",
+        "Collaborated with local vendors to promote organic produce",
+        "Surveyed community for post-awareness behavior changes"
+      ]
+    }
   }
 ];
 

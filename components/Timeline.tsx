@@ -67,6 +67,14 @@ const timelineData: TimelineItem[] = [
         description: "Invited speaker on technology integration in healthcare systems.",
         icon: <Lightbulb className="w-5 h-5" />,
         color: "from-rose-500 to-pink-500",
+    },
+    {
+        year: "2025-26",
+        title: "Intern — Arvico Electronics",
+        subtitle: "Wiring Harness & Electromechanical Assemblies",
+        description: "Trained in electrical & electronics concepts and worked on wiring harness assembly and testing at Arvico Electronics Pvt. Ltd. (Dec 2025 – Mar 2026).",
+        icon: <Briefcase className="w-5 h-5" />,
+        color: "from-blue-600 to-indigo-600",
     }
 ];
 

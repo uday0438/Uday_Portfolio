@@ -12,9 +12,10 @@ interface Certification {
 const certifications: Certification[] = [
     { title: "Computer Architecture", issuer: "NPTEL", icon: <Cpu className="w-5 h-5" />, color: "text-blue-500" },
     { title: "MongoDB Basics Certification", issuer: "MongoDB University", icon: <BookOpen className="w-5 h-5" />, color: "text-green-500" },
-    { title: "VLSI Design", issuer: "Upgrade", icon: <Cpu className="w-5 h-5" />, color: "text-purple-500" },
+    { title: "VLSI Design", issuer: "Internshala", icon: <Cpu className="w-5 h-5" />, color: "text-purple-500" },
     { title: "Getting Started with AI on Jetson Nano", issuer: "Nvidia", icon: <BookOpen className="w-5 h-5" />, color: "text-cyan-500" },
     { title: "Networking & Storage Essentials", issuer: "EDX", icon: <Wifi className="w-5 h-5" />, color: "text-amber-500" },
+    { title: "Matlab OnRamp", issuer: "Matlab", icon: <Code className="w-5 h-5" />, color: "text-orange-500" },
     { title: "Introduction to Internet of Things", issuer: "NPTEL", icon: <Wifi className="w-5 h-5" />, color: "text-indigo-500" },
 ];
 
@@ -27,9 +28,15 @@ const achievements = [
     },
     {
         title: "1st Prize — Project Expo",
-        description: "Navarang 2024 at Kuppam Engineering College",
+        description: "Nagastra 2026 at Kuppam Engineering College",
         icon: <Trophy className="w-6 h-6" />,
         color: "from-blue-500 to-purple-500",
+    },
+    {
+        title: "Resource Person — PES CME",
+        description: "Invited speaker on technology integration in healthcare (Dec 2025)",
+        icon: <Lightbulb className="w-6 h-6" />,
+        color: "from-rose-500 to-pink-500",
     },
     {
         title: "Certificate of Merit — 1M1B",
