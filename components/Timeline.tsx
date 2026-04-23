@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, useInView } from 'framer-motion';
-import { GraduationCap, Briefcase, Code, Lightbulb } from 'lucide-react';
+import { GraduationCap, Briefcase, Code, Lightbulb, X } from 'lucide-react';
 
 interface TimelineItem {
     year: string;
@@ -9,76 +10,60 @@ interface TimelineItem {
     description: string;
     icon: React.ReactNode;
     color: string;
+    certificateImage?: string;
 }
 
 const timelineData: TimelineItem[] = [
     {
+        year: "2020",
+        title: "Secondary School Certificate (SSC)",
+        subtitle: "B.S.R Mpl High school, Dharmavaram — GPA: 7.7",
+        description: "Completed secondary education with a strong foundation in science and mathematics.",
+        icon: <GraduationCap className="w-5 h-5" />,
+        color: "from-gray-500 to-slate-600",
+    },
+    {
         year: "2022",
-        title: "Started B.Tech in ECE",
+        title: "Intermediate (XII)",
+        subtitle: "Government junior college, Dharmavaram — GPA: 59%",
+        description: "Higher secondary education with a focus on Mathematics, Physics, and Chemistry.",
+        icon: <GraduationCap className="w-5 h-5" />,
+        color: "from-slate-500 to-gray-600",
+    },
+    {
+        year: "2022-26",
+        title: "B.Tech in ECE",
         subtitle: "Kuppam Engineering College — GPA: 7.6",
-        description: "Began pursuing Electronics and Communication Engineering with a focus on digital electronics, VLSI design, and embedded systems.",
+        description: "Pursuing Electronics and Communication Engineering with a focus on digital electronics, VLSI design, and embedded systems.",
         icon: <GraduationCap className="w-5 h-5" />,
         color: "from-blue-500 to-blue-600",
-    },
-    {
-        year: "2023",
-        title: "First IoT Projects",
-        subtitle: "Smart Blind Stick & Water Level Alert",
-        description: "Built hands-on IoT projects using ESP32, sensors, and GSM modules to solve real-world problems for visually impaired and water management.",
-        icon: <Lightbulb className="w-5 h-5" />,
-        color: "from-amber-500 to-orange-500",
-    },
-    {
-        year: "2024",
-        title: "Smart India Hackathon Winner",
-        subtitle: "National Level Achievement",
-        description: "Won the prestigious Smart India Hackathon with an innovative IoT solution, competing against thousands of teams nationwide.",
-        icon: <Briefcase className="w-5 h-5" />,
-        color: "from-purple-500 to-pink-500",
     },
     {
         year: "2024",
         title: "IoT Internship — APSCHE",
         subtitle: "Council for Skills and Competencies",
-        description: "Completed IoT internship through the Council for Skills and Competencies by APSCHE, gaining industry exposure in embedded systems and IoT development.",
+        description: "Gained industry exposure in embedded systems and IoT development through APSCHE's skill council.",
         icon: <Briefcase className="w-5 h-5" />,
         color: "from-green-500 to-emerald-500",
-    },
-    {
-        year: "2025",
-        title: "Advanced Projects & Research",
-        subtitle: "Attendance System & Smart Door Lock",
-        description: "Developed face-recognition systems with HuskyLens AI camera and ESP32, integrating Google Sheets API and Bluetooth connectivity for real-world applications.",
-        icon: <Code className="w-5 h-5" />,
-        color: "from-cyan-500 to-teal-500",
-    },
-    {
-        year: "2025",
-        title: "1M1B Workplace Experience",
-        subtitle: "Jan–Feb 2025",
-        description: "5-day industry immersion on sustainability, emerging technologies, and workplace readiness with Aditya Birla Fashion & Retail Ltd.",
-        icon: <Briefcase className="w-5 h-5" />,
-        color: "from-indigo-500 to-violet-500",
-    },
-    {
-        year: "2025",
-        title: "Resource Person at PES CME",
-        subtitle: "PES Institute of Medical Sciences and Research (Dec 2025)",
-        description: "Invited speaker on technology integration in healthcare systems.",
-        icon: <Lightbulb className="w-5 h-5" />,
-        color: "from-rose-500 to-pink-500",
+        certificateImage: "/certificates/apsche_iot.jpg",
     },
     {
         year: "2025-26",
-        title: "Intern — Arvico Electronics",
-        subtitle: "Wiring Harness & Electromechanical Assemblies",
-        description: "Trained in electrical & electronics concepts and worked on wiring harness assembly and testing at Arvico Electronics Pvt. Ltd. (Dec 2025 – Mar 2026).",
+        title: "Intern — Wiring Harness & Assemblies",
+        subtitle: "Aaviza Electronics Pvt. Ltd. (Dec 2025 - Mar 2026)",
+        description: "Trained in electrical & electronics concepts, working on wiring harness assembly and testing following quality and safety standards.",
         icon: <Briefcase className="w-5 h-5" />,
-        color: "from-blue-600 to-indigo-600",
+        color: "from-indigo-500 to-violet-500",
+        certificateImage: "/certificates/aaviza_certificate.png",
     }
 ];
 
-const TimelineCard: React.FC<{ item: TimelineItem; index: number; isLeft: boolean }> = ({ item, index, isLeft }) => {
+const TimelineCard: React.FC<{ 
+    item: TimelineItem; 
+    index: number; 
+    isLeft: boolean;
+    onImageClick: (img: string) => void;
+}> = ({ item, index, isLeft, onImageClick }) => {
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -96,8 +81,19 @@ const TimelineCard: React.FC<{ item: TimelineItem; index: number; isLeft: boolea
                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${item.color} mb-3`}>
                         {item.year}
                     </span>
-                    <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-blue-500 transition-colors">
+                    <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-blue-500 transition-colors flex items-center gap-2">
                         {item.title}
+                        {item.certificateImage && (
+                            <span 
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    onImageClick(item.certificateImage!);
+                                }}
+                                className="cursor-pointer text-[10px] bg-blue-500/10 text-blue-500 px-2 py-0.5 rounded-full hover:bg-blue-500 hover:text-white transition-all"
+                            >
+                                View Cert
+                            </span>
+                        )}
                     </h3>
                     <p className="text-sm font-medium text-blue-500 dark:text-blue-400 mt-1">{item.subtitle}</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2 leading-relaxed">{item.description}</p>
@@ -125,6 +121,17 @@ const TimelineCard: React.FC<{ item: TimelineItem; index: number; isLeft: boolea
 const Timeline: React.FC = () => {
     const headerRef = useRef<HTMLDivElement>(null);
     const isHeaderInView = useInView(headerRef, { once: true });
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+    // Prevent scrolling when modal is open
+    useEffect(() => {
+        if (selectedImage) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => { document.body.style.overflow = 'unset'; };
+    }, [selectedImage]);
 
     return (
         <div className="py-24 px-6 md:px-12 max-w-5xl mx-auto">
@@ -153,10 +160,56 @@ const Timeline: React.FC = () => {
                             item={item}
                             index={index}
                             isLeft={index % 2 === 0}
+                            onImageClick={(img) => setSelectedImage(img)}
                         />
                     ))}
                 </div>
             </div>
+
+            {/* Modal - Portaled to body */}
+            {typeof document !== 'undefined' && selectedImage && createPortal(
+                <div 
+                    className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8 bg-black/95 backdrop-blur-xl cursor-zoom-out"
+                    onClick={() => setSelectedImage(null)}
+                >
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        className="relative max-w-5xl w-full bg-white dark:bg-slate-900 rounded-[2.5rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.8)] border border-white/10"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black/50 to-transparent z-10 pointer-events-none" />
+                        <button 
+                            className="absolute top-5 right-5 w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white flex items-center justify-center transition-all z-20 group border border-white/10 shadow-lg"
+                            onClick={() => setSelectedImage(null)}
+                        >
+                            <X size={28} />
+                        </button>
+                        
+                        <div className="p-2 md:p-4 bg-gray-100 dark:bg-slate-800">
+                            <img 
+                                src={selectedImage} 
+                                alt="Certificate" 
+                                className="w-full h-auto max-h-[75vh] object-contain rounded-2xl shadow-inner"
+                            />
+                        </div>
+                        
+                        <div className="p-8 bg-white dark:bg-slate-900 flex flex-col md:flex-row justify-between items-center gap-6">
+                            <div className="text-center md:text-left">
+                                <h4 className="text-2xl font-bold text-slate-900 dark:text-white">Internship Certificate</h4>
+                                <p className="text-lg text-blue-500 dark:text-blue-400 font-semibold mt-1">Aaviza Electronics Pvt. Ltd.</p>
+                            </div>
+                            <button 
+                                onClick={() => setSelectedImage(null)}
+                                className="px-10 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-bold hover:scale-105 transition-transform text-lg shadow-xl"
+                            >
+                                Close Preview
+                            </button>
+                        </div>
+                    </motion.div>
+                </div>,
+                document.body
+            )}
         </div>
     );
 };

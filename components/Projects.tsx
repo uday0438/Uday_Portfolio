@@ -133,19 +133,19 @@ const projects: Project[] = [
   },
   {
     id: 8,
-    title: "CSP Project",
-    description: "Conducted awareness activities on use of chemicals on fruits and vegetables in the community.",
-    tags: ["Community Service", "Awareness", "Research"],
-    gradient: "from-green-500/20 to-lime-500/20 dark:from-green-500/10 dark:to-lime-500/10",
+    title: "CSP Project - Fruit Safety",
+    description: "Community awareness project on the use of chemicals on fruits and vegetables, conducting detailed impact analysis.",
+    tags: ["Community Awareness", "Field Study", "Research"],
+    gradient: "from-blue-600/20 to-green-600/20 dark:from-blue-600/10 dark:to-green-600/10",
     icon: <Leaf className="w-8 h-8 text-green-500" />,
     details: {
-      challenge: "Widespread concern about chemical residues on produce and lack of public knowledge on safe consumption practices.",
-      solution: "Organized community workshops and prepared educational material to explain the risks of various pesticides and demonstrate effective cleaning methods.",
+      challenge: "Lack of awareness in the community regarding the harmful effects of chemical ripening and pesticides on common fruits and vegetables.",
+      solution: "Conducted field visits and awareness activities, educating local vendors and consumers about organic alternatives and safe washing techniques.",
       results: [
-        "Reached 200+ local community members",
-        "Distributed safety guidelines in regional language",
-        "Collaborated with local vendors to promote organic produce",
-        "Surveyed community for post-awareness behavior changes"
+        "Surveyed 50+ local households and vendors",
+        "Distributed safety guidelines for chemical-free produce",
+        "Documented impact of ripening agents on health",
+        "Recommended best practices for vegetable sanitation"
       ]
     }
   }

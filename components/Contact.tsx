@@ -133,7 +133,7 @@ const Contact: React.FC = () => {
 
       {/* Footer bar */}
       <div className="mt-24 pt-8 border-t border-[var(--border-color)] flex flex-col md:flex-row justify-between items-center text-xs text-[var(--text-muted)] max-w-4xl mx-auto">
-        <p>© Uday Bhaskar 2026</p>
+        <p>© Uday 2026</p>
         <p className="font-mono mt-2 md:mt-0">
           {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
         </p>

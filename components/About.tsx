@@ -8,9 +8,9 @@ const About: React.FC = () => {
   const skillsRef = useRef<HTMLDivElement>(null);
   const skillsInView = useInView(skillsRef, { once: true, margin: "-50px" });
 
-  const technicalSkills = ['Digital Electronics', 'VLSI Design', 'Soldering', 'Embedded Systems', 'PCB Design', 'Arduino', 'Circuit Design', 'IoT Systems'];
-  const programmingLangs = ['Python', 'C', 'HTML', 'CSS', 'JavaScript'];
-  const softwareTools = ['Keil uVision', 'MATLAB', 'Arduino IDE', 'Proteus', 'OrCAD', 'Multisim', 'VS Code'];
+  const technicalSkills = ['Digital Electronics', 'VLSI Design', 'Soldering', 'Embedded Systems', 'PCB Design', 'Arduino', 'Circuit Design', 'IoT Systems', 'Microcontrollers (ESP32, 8051)'];
+  const programmingLangs = ['Python', 'C', 'HTML/CSS', 'JavaScript'];
+  const softwareTools = ['Keil uVision', 'MATLAB', 'Proteus', 'OrCAD', 'MultiSim', 'VS Code', 'Arduino IDE'];
 
   const SkillChip: React.FC<{ skill: string; delay: number; variant?: 'default' | 'accent' | 'outline' }> = ({ skill, delay, variant = 'default' }) => {
     const baseClasses = "px-5 py-2.5 rounded-xl text-sm font-semibold cursor-default transition-all duration-300";
@@ -54,20 +54,20 @@ const About: React.FC = () => {
           <div className="w-56 h-56 md:w-80 md:h-80 flex-shrink-0 relative group">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-[2.5rem] rotate-6 transform transition-transform group-hover:rotate-8 opacity-20"></div>
             <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-[2.5rem] -rotate-3 transform transition-transform group-hover:-rotate-6 opacity-10"></div>
-            <img
-              src="/profile.jpg"
-              alt="Uday Bhaskar"
-              className="absolute inset-0 w-full h-full object-cover rounded-[2.5rem] shadow-xl border-4 border-[var(--bg-secondary)]"
-            />
+              <img
+                src="/profile.jpg"
+                alt="Uday"
+                className="absolute inset-0 w-full h-full object-cover rounded-[2.5rem] shadow-xl border-4 border-[var(--bg-secondary)]"
+              />
           </div>
 
           <div className="flex-1 space-y-8">
             <div className="space-y-4">
               <p className="text-xl text-[var(--text-secondary)] leading-relaxed font-medium">
-                I am an enthusiastic <span className="text-[var(--text-primary)] font-bold decoration-blue-500/30 underline decoration-4 underline-offset-4">ECE fresher</span> with strong motivation and leadership skills.
+                I am an enthusiastic <span className="text-[var(--text-primary)] font-bold decoration-blue-500/30 underline decoration-4 underline-offset-4">ECE fresher</span> with strong motivation and leadership skills, eager to learn emerging technologies.
               </p>
               <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                Currently pursuing my B.Tech at <span className="font-semibold text-[var(--text-primary)]">Kuppam Engineering College</span> (Expected 2026, GPA: 7.6). I am eager to learn emerging technologies and innovative methodologies in electronics and communication, always willing to explore and develop creative solutions that push the boundaries of current technology.
+                Currently pursuing B.Tech at <span className="font-semibold text-[var(--text-primary)]">Kuppam Engineering College</span> (GPA: 7.6). I'm always willing to explore and develop creative solutions that push the boundaries of current technology, with a focus on electronic systems and innovation.
               </p>
             </div>
             

@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
 const roles = [
-  "IoT Developer",
-  "VLSI Designer",
-  "Embedded Systems Engineer",
-  "Circuit Architect",
+  "IoT & Embedded Systems Engineer",
+  "VLSI Design Enthusiast",
+  "Circuit Design Expert",
+  "Hardware Architect",
 ];
 
 const Hero: React.FC = () => {
@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
         transition={{ duration: 1, delay: 0.5 }}
         className="text-center"
       >
-        <h1 className="font-serif text-[12vw] md:text-[15vw] leading-none text-[var(--text-primary)] italic select-none">
+        <h1 className="font-serif text-[8vw] md:text-[10vw] leading-none text-[var(--text-primary)] italic select-none">
           Uday
         </h1>
       </motion.div>
