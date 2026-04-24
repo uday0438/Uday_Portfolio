@@ -28,10 +28,11 @@ const certifications: Certification[] = [
     { title: "Computer Architecture", issuer: "NPTEL", icon: <Cpu className="w-5 h-5" />, color: "text-blue-500", image: "/certificates/nptel_computer_architecture.jpg" },
     { title: "MongoDB Basics Certification", issuer: "MongoDB University", icon: <BookOpen className="w-5 h-5" />, color: "text-green-500" },
     { title: "VLSI Design", issuer: "Internshala", icon: <Cpu className="w-5 h-5" />, color: "text-purple-500", image: "/certificates/internshala_vlsi.jpg" },
-    { title: "Getting Started with AI on Jetson Nano", issuer: "Nvidia", icon: <BookOpen className="w-5 h-5" />, color: "text-cyan-500" },
-    { title: "Networking & Storage Essentials", issuer: "EDX", icon: <Wifi className="w-5 h-5" />, color: "text-amber-500" },
-    { title: "Matlab Onramp", issuer: "Mathworks", icon: <Code className="w-5 h-5" />, color: "text-orange-500" },
-    { title: "Introduction to Internet of Things", issuer: "NPTEL", icon: <Wifi className="w-5 h-5" />, color: "text-indigo-500", image: "/certificates/nptel_iot.jpg" },
+    { title: "Getting Started with AI on Jetson Nano", issuer: "Nvidia", icon: <BookOpen className="w-5 h-5" />, color: "text-cyan-500", image: "/certificates/nvidia_ai.jpg" },
+    { title: "Networking & Storage Essentials", issuer: "EDX", icon: <Wifi className="w-5 h-5" />, color: "text-amber-500", image: "/certificates/edx_networking.jpg" },
+    { title: "Matlab Onramp", issuer: "Mathworks", icon: <Code className="w-5 h-5" />, color: "text-orange-500", image: "/certificates/matlab_onramp.jpg" },
+    { title: "Introduction to Internet of Things", issuer: "NPTEL", icon: <Wifi className="w-5 h-5" />, color: "text-teal-500", image: "/certificates/nptel_iot.png" },
+    { title: "Quantum Fundamentals", issuer: "WISER / Qubitech", icon: <Cpu className="w-5 h-5" />, color: "text-blue-400", image: "/certificates/quantum_fundamentals.jpg" },
 ];
 
 const achievements: Achievement[] = [
@@ -87,6 +88,25 @@ Grateful to the management and organizing committee of Kuppam Engineering Colleg
         description: "One Million for One Billion Workplace Experience",
         icon: <Star className="w-6 h-6" />,
         color: "from-green-500 to-emerald-500",
+        details: {
+            text: `Over five days in the 1M1B Workplace Experience, I gained hands-on exposure to real-world problem-solving, teamwork, and corporate workflows.
+
+Led the development of “ScanGreen🍃” while applying SDLC principles and collaborating under tight deadlines. Pitched a Smart Attendance System using face recognition, receiving feedback on scalability, feasibility, and user impact.
+
+Had the opportunity to present my project to Hon’ble CM N. Chandrababu Naidu, strengthening my confidence and communication skills. Engaged with industry mentors and leaders, gaining insights into business evaluation, innovation, and professional growth.
+
+This experience strengthened my mindset, adaptability, and ability to build impactful, real-world technology solutions.`,
+            images: [
+                "/achievements/1m1b/cert.jpeg",
+                "/achievements/1m1b/cert_receive.jpg",
+                "/achievements/1m1b/cm_presentation.jpg",
+                "/achievements/1m1b/group_1.jpg",
+                "/achievements/1m1b/group_2.jpg",
+                "/achievements/1m1b/group_3.jpg",
+                "/achievements/1m1b/parth.jpg",
+                "/achievements/1m1b/titan.jpg"
+            ]
+        }
     },
     {
         title: "Resource Person at PES CME",
@@ -119,6 +139,81 @@ I sincerely thank the organizing committee and leadership team at PESIMSR for th
             ]
         }
     },
+    {
+        title: "2nd Prize — Project Expo",
+        description: "National Level Technical Symposium TEKWARZZ-2K25 at PSV College of Engineering",
+        icon: <Trophy className="w-6 h-6" />,
+        color: "from-amber-400 to-orange-500",
+        details: {
+            text: `🥈 Secured 2nd Prize in the National Level Technical Symposium "TEKWARZZ-2K25" organized by the Department of ECE at P.S.V. College of Engineering and Technology on 15th October 2025.
+
+This recognition was awarded for our project presentation during the Project Expo, competing against talented teams at a national level. The experience allowed us to demonstrate technical excellence and innovative problem-solving in the field of Electronics and Communication Engineering.`,
+            images: [
+                "/achievements/tekwarzz/cert.jpg",
+                "/achievements/tekwarzz/1.jpg",
+                "/achievements/tekwarzz/2.jpg"
+            ]
+        }
+    },
+    {
+        title: "Certificate of Appreciation — Agastya",
+        description: "Innovation Expo at Navarachana Innovation Hub 10th Anniversary",
+        icon: <Star className="w-6 h-6" />,
+        color: "from-cyan-500 to-blue-500",
+        details: {
+            text: `🌟 Proud Moment of Recognition 🌟
+
+I am honored to receive a Certificate of Appreciation from Agastya International Foundation during the Navarachana Innovation Hub – 10th Anniversary Celebrations, held at the Creativity Campus on 23rd February 2026.
+
+My project titled “Smart Attendance System using Face Recognition” was recognized for its innovation, creativity, and problem-solving approach during the Innovation Expo. This recognition strengthens my commitment toward developing practical, technology-driven solutions that address real-world challenges in the education sector.
+
+Receiving the “I Am an Innovator” badge from the Navarachana Innovation & Entrepreneurship initiative is truly motivating and inspires me to continue exploring impactful innovations.`,
+            images: [
+                "/achievements/agastya/cert.jpg",
+                "/achievements/agastya/badge.jpg",
+                "/achievements/agastya/presentation.jpg",
+                "/achievements/agastya/group.jpg"
+            ]
+        }
+    },
+    {
+        title: "CreateX 2026 — Prototype Fest",
+        description: "National Level Idea & Prototype Fest at Marudhar Kesari Jain College",
+        icon: <Lightbulb className="w-6 h-6" />,
+        color: "from-purple-500 to-pink-500",
+        details: {
+            text: `Innovation begins with solving real problems.
+
+Proud to share that our team showcased “ClassLens – Smart Attendance System using Face Recognition” at the CreateX 2026 National Level Idea & Prototype Fest, hosted by Marudhar Kesari Jain College for Women (Autonomous) in collaboration with StartupTN and Anna University ED Cell on 27th February 2026.
+
+Our project focuses on automating classroom attendance using AI-based face recognition and embedded systems, reducing manual effort while improving accuracy and efficiency. This event provided an incredible platform to present our prototype, receive valuable feedback, and engage with innovators and mentors.
+
+Proud of my team and excited to continue building impactful solutions.`,
+            images: [
+                "/achievements/createx/cert.jpg",
+                "/achievements/createx/team.jpg"
+            ]
+        }
+    },
+    {
+        title: "Paper Presentation — NCEECT 2026",
+        description: "Presented research on 'Class Lens' at the National Conference",
+        icon: <Code className="w-6 h-6" />,
+        color: "from-blue-600 to-cyan-500",
+        details: {
+            text: `🎓 Paper Presentation at NCEECT-2026
+
+I am proud to have successfully presented our research paper titled “Class Lens - Smart Attendance System Using Face Recognition” at the National Conference on Electrical, Electronics and Communication Technologies (NCEECT-2026).
+
+📍 Kuppam Engineering College (Autonomous)
+📅 31st March 2026
+
+The conference, organized by the Department of ECE & EEE, provided an excellent platform to share our innovative solution for automating classroom attendance using AI. It was a privilege to engage with experts and fellow researchers, discussing the technical challenges and real-world impact of face recognition technology in education.`,
+            images: [
+                "/achievements/nceect_2026.jpg"
+            ]
+        }
+    },
 ];
 
 const Certifications: React.FC = () => {
@@ -126,7 +221,7 @@ const Certifications: React.FC = () => {
     const isHeaderInView = useInView(headerRef, { once: true });
     const certsRef = useRef<HTMLDivElement>(null);
     const isCertsInView = useInView(certsRef, { once: true, margin: "-50px" });
-    
+
     const [selectedAchievement, setSelectedAchievement] = useState<Achievement | null>(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [selectedCertImage, setSelectedCertImage] = useState<string | null>(null);
@@ -227,22 +322,22 @@ const Certifications: React.FC = () => {
                 <AnimatePresence>
                     {selectedAchievement && (
                         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8 pointer-events-auto">
-                            <motion.div 
+                            <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 onClick={() => setSelectedAchievement(null)}
                                 className="absolute inset-0 bg-black/95 backdrop-blur-xl"
                             />
-                            
-                            <motion.div 
+
+                            <motion.div
                                 initial={{ opacity: 0, scale: 0.9, y: 30 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 30 }}
                                 className="relative w-full max-w-6xl h-full max-h-[90vh] bg-slate-900 rounded-[2.5rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.8)] flex flex-col md:flex-row border border-white/10"
                             >
                                 {/* Close button */}
-                                <button 
+                                <button
                                     onClick={() => setSelectedAchievement(null)}
                                     className="absolute top-6 right-6 w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all z-20 backdrop-blur-md border border-white/10 shadow-lg"
                                 >
@@ -284,13 +379,13 @@ const Certifications: React.FC = () => {
 
                                         {/* Slider Controls */}
                                         <div className="absolute inset-0 flex items-center justify-between px-6 pointer-events-none">
-                                            <button 
+                                            <button
                                                 onClick={(e) => { e.stopPropagation(); prevImage(); }}
                                                 className="w-14 h-14 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-all backdrop-blur-md pointer-events-auto border border-white/5 shadow-xl group"
                                             >
                                                 <ChevronLeft size={32} className="group-hover:-translate-x-1 transition-transform" />
                                             </button>
-                                            <button 
+                                            <button
                                                 onClick={(e) => { e.stopPropagation(); nextImage(); }}
                                                 className="w-14 h-14 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-all backdrop-blur-md pointer-events-auto border border-white/5 shadow-xl group"
                                             >
@@ -301,7 +396,7 @@ const Certifications: React.FC = () => {
                                         {/* Image Indicators */}
                                         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3">
                                             {selectedAchievement.details?.images?.map((_, idx) => (
-                                                <div 
+                                                <div
                                                     key={idx}
                                                     className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentImageIndex ? 'bg-white w-10' : 'bg-white/20 w-3'}`}
                                                 />
@@ -315,34 +410,34 @@ const Certifications: React.FC = () => {
                 </AnimatePresence>,
                 document.body
             )}
-            
+
             {/* Certificate Image Preview Modal */}
             {typeof document !== 'undefined' && createPortal(
                 <AnimatePresence>
                     {selectedCertImage && (
                         <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-8">
-                            <motion.div 
+                            <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 onClick={() => setSelectedCertImage(null)}
                                 className="absolute inset-0 bg-black/95 backdrop-blur-xl"
                             />
-                            <motion.div 
+                            <motion.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 className="relative max-w-5xl max-h-[90vh] z-10"
                             >
-                                <button 
+                                <button
                                     onClick={() => setSelectedCertImage(null)}
                                     className="absolute -top-12 right-0 md:-right-12 text-white/70 hover:text-white transition-colors"
                                 >
                                     <X size={32} />
                                 </button>
-                                <img 
-                                    src={selectedCertImage} 
-                                    alt="Certificate Preview" 
+                                <img
+                                    src={selectedCertImage}
+                                    alt="Certificate Preview"
                                     className="w-full h-full object-contain rounded-lg shadow-2xl"
                                 />
                             </motion.div>

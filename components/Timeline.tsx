@@ -21,6 +21,7 @@ const timelineData: TimelineItem[] = [
         description: "Completed secondary education with a strong foundation in science and mathematics.",
         icon: <GraduationCap className="w-5 h-5" />,
         color: "from-gray-500 to-slate-600",
+        certificateImage: "/certificates/ssc_certificate.jpg",
     },
     {
         year: "2022",
@@ -29,6 +30,7 @@ const timelineData: TimelineItem[] = [
         description: "Higher secondary education with a focus on Mathematics, Physics, and Chemistry.",
         icon: <GraduationCap className="w-5 h-5" />,
         color: "from-slate-500 to-gray-600",
+        certificateImage: "/certificates/intermediate_certificate.jpg",
     },
     {
         year: "2022-26",
@@ -45,7 +47,7 @@ const timelineData: TimelineItem[] = [
         description: "Gained industry exposure in embedded systems and IoT development through APSCHE's skill council.",
         icon: <Briefcase className="w-5 h-5" />,
         color: "from-green-500 to-emerald-500",
-        certificateImage: "/certificates/apsche_iot.jpg",
+        certificateImage: "/certificates/apsche_iot.png",
     },
     {
         year: "2025-26",
@@ -62,7 +64,7 @@ const TimelineCard: React.FC<{
     item: TimelineItem; 
     index: number; 
     isLeft: boolean;
-    onImageClick: (img: string) => void;
+    onImageClick: (item: TimelineItem) => void;
 }> = ({ item, index, isLeft, onImageClick }) => {
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, { once: true, margin: "-80px" });
@@ -81,22 +83,25 @@ const TimelineCard: React.FC<{
                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${item.color} mb-3`}>
                         {item.year}
                     </span>
-                    <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-blue-500 transition-colors flex items-center gap-2">
+                    <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-blue-500 transition-colors">
                         {item.title}
-                        {item.certificateImage && (
-                            <span 
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    onImageClick(item.certificateImage!);
-                                }}
-                                className="cursor-pointer text-[10px] bg-blue-500/10 text-blue-500 px-2 py-0.5 rounded-full hover:bg-blue-500 hover:text-white transition-all"
-                            >
-                                View Cert
-                            </span>
-                        )}
                     </h3>
                     <p className="text-sm font-medium text-blue-500 dark:text-blue-400 mt-1">{item.subtitle}</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2 leading-relaxed">{item.description}</p>
+                    
+                    {item.certificateImage && (
+                        <div className="mt-4 flex items-center">
+                            <button 
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    onImageClick(item);
+                                }}
+                                className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-500/10 hover:bg-blue-500 text-blue-500 hover:text-white rounded-lg text-xs font-bold transition-all border border-blue-500/20 shadow-sm"
+                            >
+                                <span>View Certificate</span>
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -121,17 +126,17 @@ const TimelineCard: React.FC<{
 const Timeline: React.FC = () => {
     const headerRef = useRef<HTMLDivElement>(null);
     const isHeaderInView = useInView(headerRef, { once: true });
-    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+    const [selectedItem, setSelectedItem] = useState<TimelineItem | null>(null);
 
     // Prevent scrolling when modal is open
     useEffect(() => {
-        if (selectedImage) {
+        if (selectedItem) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'unset';
         }
         return () => { document.body.style.overflow = 'unset'; };
-    }, [selectedImage]);
+    }, [selectedItem]);
 
     return (
         <div className="py-24 px-6 md:px-12 max-w-5xl mx-auto">
@@ -160,17 +165,17 @@ const Timeline: React.FC = () => {
                             item={item}
                             index={index}
                             isLeft={index % 2 === 0}
-                            onImageClick={(img) => setSelectedImage(img)}
+                            onImageClick={(item) => setSelectedItem(item)}
                         />
                     ))}
                 </div>
             </div>
 
             {/* Modal - Portaled to body */}
-            {typeof document !== 'undefined' && selectedImage && createPortal(
+            {typeof document !== 'undefined' && selectedItem && createPortal(
                 <div 
                     className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8 bg-black/95 backdrop-blur-xl cursor-zoom-out"
-                    onClick={() => setSelectedImage(null)}
+                    onClick={() => setSelectedItem(null)}
                 >
                     <motion.div 
                         initial={{ opacity: 0, scale: 0.9, y: 30 }}
@@ -181,14 +186,14 @@ const Timeline: React.FC = () => {
                         <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black/50 to-transparent z-10 pointer-events-none" />
                         <button 
                             className="absolute top-5 right-5 w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white flex items-center justify-center transition-all z-20 group border border-white/10 shadow-lg"
-                            onClick={() => setSelectedImage(null)}
+                            onClick={() => setSelectedItem(null)}
                         >
                             <X size={28} />
                         </button>
                         
                         <div className="p-2 md:p-4 bg-gray-100 dark:bg-slate-800">
                             <img 
-                                src={selectedImage} 
+                                src={selectedItem.certificateImage} 
                                 alt="Certificate" 
                                 className="w-full h-auto max-h-[75vh] object-contain rounded-2xl shadow-inner"
                             />
@@ -196,11 +201,15 @@ const Timeline: React.FC = () => {
                         
                         <div className="p-8 bg-white dark:bg-slate-900 flex flex-col md:flex-row justify-between items-center gap-6">
                             <div className="text-center md:text-left">
-                                <h4 className="text-2xl font-bold text-slate-900 dark:text-white">Internship Certificate</h4>
-                                <p className="text-lg text-blue-500 dark:text-blue-400 font-semibold mt-1">Aaviza Electronics Pvt. Ltd.</p>
+                                <h4 className="text-2xl font-bold text-slate-900 dark:text-white">
+                                    {selectedItem.title.includes('SSC') ? 'SSC Certificate' : 
+                                     selectedItem.title.includes('Intermediate') ? 'Intermediate Certificate' : 
+                                     'Internship Certificate'}
+                                </h4>
+                                <p className="text-lg text-blue-500 dark:text-blue-400 font-semibold mt-1">{selectedItem.subtitle}</p>
                             </div>
                             <button 
-                                onClick={() => setSelectedImage(null)}
+                                onClick={() => setSelectedItem(null)}
                                 className="px-10 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-bold hover:scale-105 transition-transform text-lg shadow-xl"
                             >
                                 Close Preview
