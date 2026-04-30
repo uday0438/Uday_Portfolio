@@ -1,6 +1,6 @@
 import React, { useRef, MouseEvent, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useInView, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Cpu, Wifi, Droplets, Eye, Leaf, Sprout, ShoppingBag, X, CheckCircle2, AlertCircle, Lightbulb } from 'lucide-react';
+import { ExternalLink, Github, Cpu, Wifi, Droplets, Eye, Leaf, Sprout, ShoppingBag, X, CheckCircle2, AlertCircle, Lightbulb, FileText } from 'lucide-react';
 
 interface Project {
   id: number;
@@ -11,6 +11,7 @@ interface Project {
   icon: React.ReactNode;
   github?: string;
   demo?: string;
+  localPresentationPdf?: string;
   details?: {
     challenge: string;
     solution: string;
@@ -21,7 +22,7 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Contactless Attendance System",
+    title: "Mini Project: Contactless Attendance",
     description: "Face-recognition based attendance system using ESP32 and HuskyLens AI camera, automatically logging data to Google Sheets.",
     tags: ["ESP-32", "HuskyLens", "Google Sheets API"],
     gradient: "from-blue-500/20 to-cyan-500/20 dark:from-blue-500/10 dark:to-cyan-500/10",
@@ -35,6 +36,25 @@ const projects: Project[] = [
         "Eliminated physical contact requirements",
         "Automated reporting for faculty members",
         "Successful field testing with a 95%+ accuracy rate"
+      ]
+    }
+  },
+  {
+    id: 9,
+    title: "Major Project: Smart Attendance System",
+    description: "Advanced facial recognition attendance system utilizing a Raspberry Pi and webcam for robust and scalable deployment.",
+    tags: ["Raspberry Pi", "Webcam", "Python", "OpenCV"],
+    gradient: "from-indigo-500/20 to-violet-500/20 dark:from-indigo-500/10 dark:to-violet-500/10",
+    icon: <Eye className="w-8 h-8 text-indigo-500" />,
+    github: "https://github.com/uday0438",
+    details: {
+      challenge: "Scaling contactless attendance for larger institutions requires higher processing power, better camera resolution, and more robust database management than microcontroller-based solutions can provide.",
+      solution: "Engineered a comprehensive attendance solution using a Raspberry Pi paired with a standard webcam. Leveraged OpenCV and Python for accurate facial recognition, enabling faster processing of multiple faces and more complex data handling.",
+      results: [
+        "Capable of recognizing multiple faces in a single frame",
+        "Enhanced image processing capabilities using Python and OpenCV",
+        "Robust local database logging before cloud synchronization",
+        "Scalable architecture suitable for institutional implementation"
       ]
     }
   },
@@ -102,6 +122,9 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "JavaScript", "AI Tools"],
     gradient: "from-emerald-500/20 to-teal-500/20 dark:from-emerald-500/10 dark:to-teal-500/10",
     icon: <Sprout className="w-8 h-8 text-emerald-500" />,
+    github: "https://github.com/uday0438/Scan-Green",
+    demo: "https://scan-green-one.vercel.app/",
+    localPresentationPdf: "/Presentation1.pdf",
     details: {
       challenge: "Users lack clear information on the sustainability of everyday products, making Eco-friendly shopping difficult and time-consuming.",
       solution: "Architected a frontend prototype for an item-scanning app that calculates environmental impact scores based on materials, carbon footprint, and recyclability.",
@@ -250,15 +273,15 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
         </div>
 
         {/* Modal Footer */}
-        <div className="p-6 border-t border-[var(--border-color)] bg-[var(--bg-primary)] flex justify-end gap-4">
+        <div className="p-6 border-t border-[var(--border-color)] bg-[var(--bg-primary)] flex flex-wrap justify-end gap-4">
           {project.github && (
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)] text-[var(--text-primary)] hover:border-blue-500 transition-all font-medium"
+              className="flex items-center gap-2 px-7 py-3.5 rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)] text-xl text-[var(--text-primary)] hover:border-blue-500 transition-all font-semibold shadow-sm"
             >
-              <Github size={18} /> View Code
+              <Github size={24} /> View Code
             </a>
           )}
           {project.demo && (
@@ -266,9 +289,9 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 transition-all font-medium"
+              className="flex items-center gap-2 px-7 py-3.5 rounded-xl bg-blue-600 text-xl text-white hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 transition-all font-semibold shadow-sm"
             >
-              <ExternalLink size={18} /> Live Demo
+              <ExternalLink size={24} /> Live Demo
             </a>
           )}
         </div>
@@ -359,8 +382,23 @@ const ProjectCard: React.FC<{ project: Project; index: number; onClick: () => vo
                 <span className="text-[10px] text-[var(--text-muted)] mt-0.5">+{project.tags.length - 2} more</span>
               )}
             </div>
-            <div className="w-8 h-8 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-secondary)] group-hover:bg-blue-500 group-hover:text-white transition-all">
-              <ExternalLink size={14} />
+            
+            <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
+              {project.github && (
+                <a href={project.github} target="_blank" rel="noopener noreferrer" title="View Code" className="w-11 h-11 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-blue-500 hover:text-white transition-all shadow-md">
+                  <Github size={20} />
+                </a>
+              )}
+              {project.demo && (
+                <a href={project.demo} target="_blank" rel="noopener noreferrer" title="Live Demo" className="w-11 h-11 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-blue-500 hover:text-white transition-all shadow-md">
+                  <ExternalLink size={20} />
+                </a>
+              )}
+              {(!project.github && !project.demo) && (
+                <div className="w-11 h-11 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-secondary)] group-hover:bg-blue-500 group-hover:text-white transition-all pointer-events-none shadow-md">
+                  <ExternalLink size={20} />
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -403,7 +441,13 @@ const Projects: React.FC = () => {
             key={project.id}
             project={project}
             index={index}
-            onClick={() => setSelectedProject(project)}
+            onClick={() => {
+              if (project.localPresentationPdf) {
+                window.open(project.localPresentationPdf, '_blank');
+              } else {
+                setSelectedProject(project);
+              }
+            }}
           />
         ))}
       </div>
