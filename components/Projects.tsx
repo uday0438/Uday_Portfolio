@@ -143,6 +143,9 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "JavaScript"],
     gradient: "from-pink-500/20 to-rose-500/20 dark:from-pink-500/10 dark:to-rose-500/10",
     icon: <ShoppingBag className="w-8 h-8 text-pink-500" />,
+    github: "https://github.com/uday0438/SilkArt",
+    demo: "https://silkart.vercel.app/",
+    localPresentationPdf: "https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fuday0438%2FSilkArt%2Fmain%2FSILKART.pptx",
     details: {
       challenge: "Local traditional silk artisans lack a digital presence to compete with large automated e-commerce platforms.",
       solution: "Created a visually stunning, lightweight static website that focuses on the 'story' of the silk, using high-resolution imagery and elegant typography.",
