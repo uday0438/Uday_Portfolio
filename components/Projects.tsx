@@ -27,7 +27,8 @@ const projects: Project[] = [
     tags: ["ESP-32", "HuskyLens", "Google Sheets API"],
     gradient: "from-blue-500/20 to-cyan-500/20 dark:from-blue-500/10 dark:to-cyan-500/10",
     icon: <Eye className="w-8 h-8 text-blue-500" />,
-    github: "https://github.com/uday0438",
+    github: "https://github.com/uday0438/Smart_Attendance_System.git",
+    localPresentationPdf: "https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fuday0438%2FSmart_Attendance_System%2Fmain%2FDocs%2Fsmart%2520attendence.pptx",
     details: {
       challenge: "Manual attendance marking in classrooms is time-consuming and prone to proxy errors. Traditional biometric systems require physical contact, which is unhygienic.",
       solution: "Developed a contactless system using the HuskyLens AI vision sensor paired with an ESP32. The system recognizes faces in real-time and pushes attendance data directly to a Google Sheet via a custom Apps Script API.",
@@ -46,7 +47,8 @@ const projects: Project[] = [
     tags: ["Raspberry Pi", "Webcam", "Python", "OpenCV"],
     gradient: "from-indigo-500/20 to-violet-500/20 dark:from-indigo-500/10 dark:to-violet-500/10",
     icon: <Eye className="w-8 h-8 text-indigo-500" />,
-    github: "https://github.com/uday0438",
+    github: "https://github.com/uday0438/Smart_Attendance_Raspi.git",
+    localPresentationPdf: "https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fuday0438%2FSmart_Attendance_Raspi%2Fmain%2FDoc%2FClassLens%2520Smart%2520Attendance%2520System.pptx",
     details: {
       challenge: "Scaling contactless attendance for larger institutions requires higher processing power, better camera resolution, and more robust database management than microcontroller-based solutions can provide.",
       solution: "Engineered a comprehensive attendance solution using a Raspberry Pi paired with a standard webcam. Leveraged OpenCV and Python for accurate facial recognition, enabling faster processing of multiple faces and more complex data handling.",
@@ -174,6 +176,22 @@ const projects: Project[] = [
         "Recommended best practices for vegetable sanitation"
       ]
     }
+  },
+  {
+    id: 10,
+    title: "Botanica",
+    description: "Project details and case study coming soon.",
+    tags: ["Coming Soon"],
+    gradient: "from-green-500/20 to-emerald-500/20 dark:from-green-500/10 dark:to-emerald-500/10",
+    icon: <Leaf className="w-8 h-8 text-green-500" />
+  },
+  {
+    id: 11,
+    title: "KEC Indoor Navigator",
+    description: "Project details and case study coming soon.",
+    tags: ["Coming Soon"],
+    gradient: "from-blue-500/20 to-indigo-500/20 dark:from-blue-500/10 dark:to-indigo-500/10",
+    icon: <Wifi className="w-8 h-8 text-blue-500" />
   }
 ];
 
@@ -303,7 +321,7 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
   );
 };
 
-const ProjectCard: React.FC<{ project: Project; index: number; onClick: () => void }> = ({ project, index, onClick }) => {
+const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -337,19 +355,17 @@ const ProjectCard: React.FC<{ project: Project; index: number; onClick: () => vo
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className="perspective-1000"
-      onClick={onClick}
     >
       <motion.div
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         whileHover={{ scale: 1.02, y: -5 }}
-        whileTap={{ scale: 0.98 }}
         style={{
           rotateY,
           rotateX,
           transformStyle: "preserve-3d",
         }}
-        className={`relative h-full min-h-[360px] w-full rounded-2xl overflow-hidden cursor-pointer group bg-gradient-to-br ${project.gradient} border border-[var(--border-color)] shadow-sm hover:shadow-2xl transition-all duration-500`}
+        className={`relative h-full min-h-[360px] w-full rounded-2xl overflow-hidden group bg-gradient-to-br ${project.gradient} border border-[var(--border-color)] shadow-sm hover:shadow-2xl transition-all duration-500`}
       >
         <div
           style={{ transform: "translateZ(50px)" }}
@@ -386,10 +402,15 @@ const ProjectCard: React.FC<{ project: Project; index: number; onClick: () => vo
               )}
             </div>
             
-            <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
+            <div className="flex gap-2">
               {project.github && (
                 <a href={project.github} target="_blank" rel="noopener noreferrer" title="View Code" className="w-11 h-11 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-blue-500 hover:text-white transition-all shadow-md">
                   <Github size={20} />
+                </a>
+              )}
+              {project.localPresentationPdf && (
+                <a href={project.localPresentationPdf} target="_blank" rel="noopener noreferrer" title="View Presentation" className="w-11 h-11 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-blue-500 hover:text-white transition-all shadow-md">
+                  <FileText size={20} />
                 </a>
               )}
               {project.demo && (
@@ -397,7 +418,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; onClick: () => vo
                   <ExternalLink size={20} />
                 </a>
               )}
-              {(!project.github && !project.demo) && (
+              {(!project.github && !project.demo && !project.localPresentationPdf) && (
                 <div className="w-11 h-11 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-secondary)] group-hover:bg-blue-500 group-hover:text-white transition-all pointer-events-none shadow-md">
                   <ExternalLink size={20} />
                 </div>
@@ -414,7 +435,6 @@ const ProjectCard: React.FC<{ project: Project; index: number; onClick: () => vo
 };
 
 const Projects: React.FC = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true });
 
@@ -433,9 +453,6 @@ const Projects: React.FC = () => {
             A collection of IoT, VLSI, and Engineering solutions designed to bridge the gap between hardware and software.
           </p>
         </div>
-        <div className="hidden md:block text-sm font-medium text-[var(--text-muted)] italic">
-          Click any card to read the full case study
-        </div>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -444,25 +461,9 @@ const Projects: React.FC = () => {
             key={project.id}
             project={project}
             index={index}
-            onClick={() => {
-              if (project.localPresentationPdf) {
-                window.open(project.localPresentationPdf, '_blank');
-              } else {
-                setSelectedProject(project);
-              }
-            }}
           />
         ))}
       </div>
-
-      <AnimatePresence>
-        {selectedProject && (
-          <ProjectModal
-            project={selectedProject}
-            onClose={() => setSelectedProject(null)}
-          />
-        )}
-      </AnimatePresence>
     </div>
   );
 };
