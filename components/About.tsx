@@ -64,10 +64,10 @@ const About: React.FC = () => {
           <div className="flex-1 space-y-8">
             <div className="space-y-4">
               <p className="text-xl text-[var(--text-secondary)] leading-relaxed font-medium">
-                I am an enthusiastic <span className="text-[var(--text-primary)] font-bold decoration-blue-500/30 underline decoration-4 underline-offset-4">ECE fresher</span> with strong motivation and leadership skills, eager to learn emerging technologies.
+                I am a results-driven <span className="text-[var(--text-primary)] font-bold decoration-blue-500/30 underline decoration-4 underline-offset-4">Electronics & Communication Engineering</span> student with a passion for building innovative solutions at the intersection of hardware and software.
               </p>
               <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                Currently pursuing B.Tech at <span className="font-semibold text-[var(--text-primary)]">Kuppam Engineering College</span> (GPA: 7.6). I'm always willing to explore and develop creative solutions that push the boundaries of current technology, with a focus on electronic systems and innovation.
+                Currently pursuing my B.Tech at <span className="font-semibold text-[var(--text-primary)]">Kuppam Engineering College</span> (GPA: 7.6), I specialize in <span className="font-semibold text-[var(--text-primary)]">IoT Systems, VLSI Design, and Embedded Engineering</span>. I am dedicated to developing creative, scalable solutions that solve real-world challenges through technical innovation and disciplined leadership.
               </p>
             </div>
             
