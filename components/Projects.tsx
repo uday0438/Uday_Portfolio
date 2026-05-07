@@ -81,20 +81,20 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    title: "Water Level & Leak Alert",
-    description: "Real-time water level monitoring with GSM-based SMS alerts using SIM800L module, preventing overflow.",
-    tags: ["ESP32", "SIM800L", "Water Sensors"],
+    title: "Water Level Monitoring System",
+    description: "Reliable water level monitoring system using an ultrasonic sensor and Arduino, featuring real-time percentage display and buzzer alerts.",
+    tags: ["Arduino", "HC-SR04", "I2C LCD", "Buzzer"],
     gradient: "from-cyan-500/20 to-teal-500/20 dark:from-cyan-500/10 dark:to-teal-500/10",
     icon: <Droplets className="w-8 h-8 text-cyan-500" />,
-    github: "https://github.com/uday0438",
+    github: "https://github.com/uday0438/water-level-monitor-ultrasonic.git",
     details: {
-      challenge: "Water scarcity and wastage due to overhead tank overflows are major issues in residential areas, often going unnoticed until significant damage occurs.",
-      solution: "Built an automated monitoring system using ultrasonic sensors and an ESP32. When water reaches a threshold, it triggers a GSM module to send SMS alerts and automatically shuts off the pump.",
+      challenge: "Manual monitoring of water tanks often leads to overflows and water wastage, while complex IoT solutions can be expensive and difficult to maintain.",
+      solution: "Engineered a cost-effective system using an HC-SR04 ultrasonic sensor and Arduino. The system calculates water volume percentages in real-time, displaying status on an I2C LCD and triggering a buzzer alert when the tank reaches 80% capacity.",
       results: [
-        "Prevented 100% of overflow incidents during testing",
-        "Remote monitoring via SMS for users without internet",
-        "Low power consumption design for battery operation",
-        "Instant leak detection via moisture sensors"
+        "Real-time measurement with high accuracy calibration",
+        "Automated overflow prevention with buzzer alerts",
+        "Clear status feedback via I2C LCD display",
+        "Robust software filtering to eliminate sensor noise"
       ]
     }
   },
@@ -179,19 +179,41 @@ const projects: Project[] = [
   },
   {
     id: 10,
-    title: "Botanica",
-    description: "Project details and case study coming soon.",
-    tags: ["Coming Soon"],
+    title: "Botanica AI Hub",
+    description: "Next-generation AI agricultural diagnostic system providing plant health reports, soil advice, and real-time market intelligence.",
+    tags: ["React", "Node.js", "Gemini AI", "Precision Ag"],
     gradient: "from-green-500/20 to-emerald-500/20 dark:from-green-500/10 dark:to-emerald-500/10",
-    icon: <Leaf className="w-8 h-8 text-green-500" />
+    icon: <Leaf className="w-8 h-8 text-green-500" />,
+    github: "https://github.com/uday0438/Botanica.git",
+    details: {
+      challenge: "Small-scale farmers lack access to precision diagnostic tools and real-time market data, often relying on guesswork for irrigation, pest control, and selling prices.",
+      solution: "Developed an AI-powered platform using Google Gemini 1.5. It features multi-modal plant identification, satellite field monitoring via Sentinel-2 patterns, and live Mandi market telemetry (Agmarknet) for profit optimization.",
+      results: [
+        "Kaggle-grounded identification for 38+ plant classes",
+        "NDVI field health telemetry monitoring from orbit",
+        "Hyper-local weather risk intelligence and advice",
+        "Live Indian market price tracking and analysis"
+      ]
+    }
   },
   {
     id: 11,
     title: "KEC Indoor Navigator",
-    description: "Project details and case study coming soon.",
-    tags: ["Coming Soon"],
+    description: "AI-powered indoor navigation application using sensor fusion and PDR for sub-meter accuracy in GPS-denied environments.",
+    tags: ["React Native", "Node.js", "MongoDB", "Sensor Fusion"],
     gradient: "from-blue-500/20 to-indigo-500/20 dark:from-blue-500/10 dark:to-indigo-500/10",
-    icon: <Wifi className="w-8 h-8 text-blue-500" />
+    icon: <Wifi className="w-8 h-8 text-blue-500" />,
+    github: "https://github.com/uday0438/Indoor_Navigation.git",
+    details: {
+      challenge: "GPS signals are unreliable indoors, making navigation in large campus buildings difficult. Existing beacon-based solutions are expensive and hard to maintain.",
+      solution: "Engineered a mobile solution using React Native and Pedestrian Dead Reckoning (PDR). By fusing data from smartphone motion sensors and implementing Dijkstra's algorithm on a custom spatial graph, the app provides accurate turn-by-turn navigation without external hardware.",
+      results: [
+        "Achieved sub-meter indoor tracking accuracy",
+        "Robust offline mode for campus Wi-Fi dead zones",
+        "Multi-lingual turn-by-turn voice guidance",
+        "Interactive SVG-based multi-floor mapping"
+      ]
+    }
   }
 ];
 

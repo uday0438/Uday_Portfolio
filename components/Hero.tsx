@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
         transition={{ duration: 1, delay: 0.5 }}
         className="text-center"
       >
-        <h1 className="font-serif text-[8vw] md:text-[10vw] leading-none text-[var(--text-primary)] italic select-none">
+        <h1 className="font-serif text-[11.5vw] md:text-[14.4vw] leading-none text-[var(--text-primary)] italic select-none">
           Uday
         </h1>
       </motion.div>
