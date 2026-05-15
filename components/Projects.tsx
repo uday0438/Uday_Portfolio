@@ -1,6 +1,6 @@
 import React, { useRef, MouseEvent, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useInView, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Cpu, Wifi, Droplets, Eye, Leaf, Sprout, ShoppingBag, X, CheckCircle2, AlertCircle, Lightbulb, FileText } from 'lucide-react';
+import { ExternalLink, Github, Cpu, Wifi, Droplets, Eye, Leaf, Sprout, ShoppingBag, X, CheckCircle2, AlertCircle, Lightbulb } from 'lucide-react';
 
 interface Project {
   id: number;
@@ -11,7 +11,6 @@ interface Project {
   icon: React.ReactNode;
   github?: string;
   demo?: string;
-  localPresentationPdf?: string;
   details?: {
     challenge: string;
     solution: string;
@@ -28,7 +27,6 @@ const projects: Project[] = [
     gradient: "from-blue-500/20 to-cyan-500/20 dark:from-blue-500/10 dark:to-cyan-500/10",
     icon: <Eye className="w-8 h-8 text-blue-500" />,
     github: "https://github.com/uday0438/Smart_Attendance_System.git",
-    localPresentationPdf: "https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fuday0438%2FSmart_Attendance_System%2Fmain%2FDocs%2Fsmart%2520attendence.pptx",
     details: {
       challenge: "Manual attendance marking in classrooms is time-consuming and prone to proxy errors. Traditional biometric systems require physical contact, which is unhygienic.",
       solution: "Developed a contactless system using the HuskyLens AI vision sensor paired with an ESP32. The system recognizes faces in real-time and pushes attendance data directly to a Google Sheet via a custom Apps Script API.",
@@ -48,7 +46,7 @@ const projects: Project[] = [
     gradient: "from-indigo-500/20 to-violet-500/20 dark:from-indigo-500/10 dark:to-violet-500/10",
     icon: <Eye className="w-8 h-8 text-indigo-500" />,
     github: "https://github.com/uday0438/Smart_Attendance_Raspi.git",
-    localPresentationPdf: "https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fuday0438%2FSmart_Attendance_Raspi%2Fmain%2FDoc%2FClassLens%2520Smart%2520Attendance%2520System.pptx",
+    demo: "https://smart-attendance-raspi.vercel.app/",
     details: {
       challenge: "Scaling contactless attendance for larger institutions requires higher processing power, better camera resolution, and more robust database management than microcontroller-based solutions can provide.",
       solution: "Engineered a comprehensive attendance solution using a Raspberry Pi paired with a standard webcam. Leveraged OpenCV and Python for accurate facial recognition, enabling faster processing of multiple faces and more complex data handling.",
@@ -67,7 +65,7 @@ const projects: Project[] = [
     tags: ["ESP-32", "HuskyLens", "Bluetooth"],
     gradient: "from-purple-500/20 to-pink-500/20 dark:from-purple-500/10 dark:to-pink-500/10",
     icon: <Wifi className="w-8 h-8 text-purple-500" />,
-    github: "https://github.com/uday0438",
+    github: "https://github.com/uday0438/Smart-Door-Unlock.git",
     details: {
       challenge: "Standard key-based or PIN-based locks are susceptible to unauthorized access and can be inconvenient for users who frequently lose keys.",
       solution: "Implemented a multi-factor authentication lock. It primary uses facial recognition via HuskyLens for primary entry, with a secondary Bluetooth-app override for remote unlocking using ESP32's BLE capabilities.",
@@ -100,20 +98,20 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: "Smart Blind Stick",
-    description: "Assistive navigation device for visually impaired using ultrasonic sensors and GSM module for emergency SOS.",
-    tags: ["ESP32", "GSM Module", "Ultrasonic"],
+    title: "IoT & AI Based Smart Blind Stick",
+    description: "Assistive navigation device for visually impaired using ultrasonic sensors and NodeMCU, providing real-time obstacle detection with haptic and audio feedback.",
+    tags: ["NodeMCU ESP8266", "HC-SR04", "IoT", "Assistive Tech"],
     gradient: "from-amber-500/20 to-orange-500/20 dark:from-amber-500/10 dark:to-orange-500/10",
     icon: <Cpu className="w-8 h-8 text-amber-500" />,
-    github: "https://github.com/uday0438",
+    github: "https://github.com/uday0438/Smart-Blind-Stick.git",
     details: {
-      challenge: "Visually impaired individuals face significant risks navigating unfamiliar environments, and emergency assistance is often hard to summon.",
-      solution: "Designed an intelligent stick equipped with ultrasonic sensors for obstacle detection with haptic feedback. Added a GPS+GSM system that sends a location link via SMS when an SOS button is pressed.",
+      challenge: "Visually impaired individuals face significant risks navigating unfamiliar environments, requiring a reliable way to detect obstacles beyond the reach of a traditional white cane.",
+      solution: "Developed an intelligent stick using a NodeMCU (ESP8266) and HC-SR04 ultrasonic sensor. The system processes distance data in real-time and provides graded alerts (buzzer and vibration) based on obstacle proximity.",
       results: [
-        "360-degree obstacle detection within 2 meters",
-        "Haptic vibration patterns for different distances",
-        "One-touch emergency geolocation sharing",
-        "Lightweight and durable 3D-printed housing"
+        "Reliable obstacle detection up to 100cm range",
+        "Graded audio-haptic feedback patterns for distance",
+        "Portable NodeMCU-based architecture with low latency",
+        "Designed for future IoT cloud logging and GPS expansion"
       ]
     }
   },
@@ -126,7 +124,6 @@ const projects: Project[] = [
     icon: <Sprout className="w-8 h-8 text-emerald-500" />,
     github: "https://github.com/uday0438/Scan-Green",
     demo: "https://scan-green-one.vercel.app/",
-    localPresentationPdf: "/Presentation1.pdf",
     details: {
       challenge: "Users lack clear information on the sustainability of everyday products, making Eco-friendly shopping difficult and time-consuming.",
       solution: "Architected a frontend prototype for an item-scanning app that calculates environmental impact scores based on materials, carbon footprint, and recyclability.",
@@ -147,7 +144,6 @@ const projects: Project[] = [
     icon: <ShoppingBag className="w-8 h-8 text-pink-500" />,
     github: "https://github.com/uday0438/SilkArt",
     demo: "https://silkart.vercel.app/",
-    localPresentationPdf: "https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fuday0438%2FSilkArt%2Fmain%2FSILKART.pptx",
     details: {
       challenge: "Local traditional silk artisans lack a digital presence to compete with large automated e-commerce platforms.",
       solution: "Created a visually stunning, lightweight static website that focuses on the 'story' of the silk, using high-resolution imagery and elegant typography.",
@@ -160,24 +156,6 @@ const projects: Project[] = [
     }
   },
   {
-    id: 8,
-    title: "CSP Project - Fruit Safety",
-    description: "Community awareness project on the use of chemicals on fruits and vegetables, conducting detailed impact analysis.",
-    tags: ["Community Awareness", "Field Study", "Research"],
-    gradient: "from-blue-600/20 to-green-600/20 dark:from-blue-600/10 dark:to-green-600/10",
-    icon: <Leaf className="w-8 h-8 text-green-500" />,
-    details: {
-      challenge: "Lack of awareness in the community regarding the harmful effects of chemical ripening and pesticides on common fruits and vegetables.",
-      solution: "Conducted field visits and awareness activities, educating local vendors and consumers about organic alternatives and safe washing techniques.",
-      results: [
-        "Surveyed 50+ local households and vendors",
-        "Distributed safety guidelines for chemical-free produce",
-        "Documented impact of ripening agents on health",
-        "Recommended best practices for vegetable sanitation"
-      ]
-    }
-  },
-  {
     id: 10,
     title: "Botanica AI Hub",
     description: "Next-generation AI agricultural diagnostic system providing plant health reports, soil advice, and real-time market intelligence.",
@@ -185,6 +163,7 @@ const projects: Project[] = [
     gradient: "from-green-500/20 to-emerald-500/20 dark:from-green-500/10 dark:to-emerald-500/10",
     icon: <Leaf className="w-8 h-8 text-green-500" />,
     github: "https://github.com/uday0438/Botanica.git",
+    demo: "https://botanica-garden.vercel.app/",
     details: {
       challenge: "Small-scale farmers lack access to precision diagnostic tools and real-time market data, often relying on guesswork for irrigation, pest control, and selling prices.",
       solution: "Developed an AI-powered platform using Google Gemini 1.5. It features multi-modal plant identification, satellite field monitoring via Sentinel-2 patterns, and live Mandi market telemetry (Agmarknet) for profit optimization.",
@@ -204,6 +183,7 @@ const projects: Project[] = [
     gradient: "from-blue-500/20 to-indigo-500/20 dark:from-blue-500/10 dark:to-indigo-500/10",
     icon: <Wifi className="w-8 h-8 text-blue-500" />,
     github: "https://github.com/uday0438/Indoor_Navigation.git",
+    demo: "https://expo.dev/accounts/uday0438/projects/kec-indoor-nav/builds/cd5b2794-3954-4ea6-b40d-519174e968e2",
     details: {
       challenge: "GPS signals are unreliable indoors, making navigation in large campus buildings difficult. Existing beacon-based solutions are expensive and hard to maintain.",
       solution: "Engineered a mobile solution using React Native and Pedestrian Dead Reckoning (PDR). By fusing data from smartphone motion sensors and implementing Dijkstra's algorithm on a custom spatial graph, the app provides accurate turn-by-turn navigation without external hardware.",
@@ -249,9 +229,13 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
               <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)]">{project.title}</h2>
               <div className="flex flex-wrap gap-2 mt-2">
                 {project.tags.map(tag => (
-                  <span key={tag} className="text-xs font-semibold px-2 py-1 rounded-md bg-[var(--bg-secondary)]/50 backdrop-blur-sm border border-[var(--border-color)] text-[var(--text-secondary)]">
+                  <button
+                    key={tag}
+                    onClick={() => window.open(`https://www.google.com/search?q=${encodeURIComponent(tag)}`, '_blank')}
+                    className="text-xs font-semibold px-2 py-1 rounded-md bg-[var(--bg-secondary)]/50 backdrop-blur-sm border border-[var(--border-color)] text-[var(--text-secondary)] hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all"
+                  >
                     {tag}
-                  </span>
+                  </button>
                 ))}
               </div>
             </div>
@@ -414,14 +398,18 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
           {/* Footer Card */}
           <div className="flex justify-between items-center mt-auto" style={{ transform: "translateZ(15px)" }}>
             <div className="flex flex-wrap gap-2">
-              {project.tags.slice(0, 2).map(tag => (
-                <span key={tag} className="bg-[var(--bg-secondary)]/80 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-bold text-[var(--text-secondary)] border border-[var(--border-color)] tracking-wide">
+              {project.tags.map(tag => (
+                <button
+                  key={tag}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open(`https://www.google.com/search?q=${encodeURIComponent(tag)}`, '_blank');
+                  }}
+                  className="bg-[var(--bg-secondary)]/80 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-bold text-[var(--text-secondary)] border border-[var(--border-color)] tracking-wide hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all"
+                >
                   {tag}
-                </span>
+                </button>
               ))}
-              {project.tags.length > 2 && (
-                <span className="text-[10px] text-[var(--text-muted)] mt-0.5">+{project.tags.length - 2} more</span>
-              )}
             </div>
             
             <div className="flex gap-2">
@@ -430,17 +418,12 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
                   <Github size={20} />
                 </a>
               )}
-              {project.localPresentationPdf && (
-                <a href={project.localPresentationPdf} target="_blank" rel="noopener noreferrer" title="View Presentation" className="w-11 h-11 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-blue-500 hover:text-white transition-all shadow-md">
-                  <FileText size={20} />
-                </a>
-              )}
               {project.demo && (
                 <a href={project.demo} target="_blank" rel="noopener noreferrer" title="Live Demo" className="w-11 h-11 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-blue-500 hover:text-white transition-all shadow-md">
                   <ExternalLink size={20} />
                 </a>
               )}
-              {(!project.github && !project.demo && !project.localPresentationPdf) && (
+              {(!project.github && !project.demo) && (
                 <div className="w-11 h-11 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-secondary)] group-hover:bg-blue-500 group-hover:text-white transition-all pointer-events-none shadow-md">
                   <ExternalLink size={20} />
                 </div>
@@ -461,7 +444,7 @@ const Projects: React.FC = () => {
   const isHeaderInView = useInView(headerRef, { once: true });
 
   return (
-    <div className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <div className="py-24 px-6 md:px-12 max-w-[1400px] mx-auto">
       <motion.div
         ref={headerRef}
         initial={{ opacity: 0, y: 20 }}

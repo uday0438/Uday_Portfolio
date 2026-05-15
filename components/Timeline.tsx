@@ -21,7 +21,6 @@ const timelineData: TimelineItem[] = [
         description: "Completed secondary education with a strong foundation in science and mathematics.",
         icon: <GraduationCap className="w-5 h-5" />,
         color: "from-gray-500 to-slate-600",
-        certificateImage: "/certificates/ssc_certificate.jpg",
     },
     {
         year: "2022",
@@ -30,7 +29,6 @@ const timelineData: TimelineItem[] = [
         description: "Higher secondary education with a focus on Mathematics, Physics, and Chemistry.",
         icon: <GraduationCap className="w-5 h-5" />,
         color: "from-slate-500 to-gray-600",
-        certificateImage: "/certificates/intermediate_certificate.jpg",
     },
     {
         year: "2022-26",
@@ -139,7 +137,7 @@ const Timeline: React.FC = () => {
     }, [selectedItem]);
 
     return (
-        <div className="py-24 px-6 md:px-12 max-w-5xl mx-auto">
+        <div className="py-24 px-6 md:px-12 max-w-[1400px] mx-auto">
             <motion.div
                 ref={headerRef}
                 initial={{ opacity: 0, y: 20 }}

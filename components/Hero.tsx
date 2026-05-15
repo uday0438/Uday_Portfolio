@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
         <span className="typing-cursor ml-0.5 text-blue-500">&nbsp;</span>
       </motion.div>
 
-      <div className="flex flex-col md:flex-row justify-between w-full max-w-6xl mt-12 px-4 md:px-0 gap-8">
+      <div className="flex flex-col md:flex-row justify-between w-full max-w-[1400px] mt-12 px-4 md:px-0 gap-8">
         <motion.div
           className="flex-1 max-w-sm"
           initial={{ opacity: 0, x: -50 }}

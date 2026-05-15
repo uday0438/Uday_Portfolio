@@ -39,7 +39,7 @@ const About: React.FC = () => {
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7 }}
-      className="py-24 px-6 md:px-12 max-w-6xl mx-auto bg-[var(--bg-secondary)] rounded-3xl my-12 shadow-sm border border-[var(--border-color)] relative overflow-hidden"
+      className="py-24 px-6 md:px-12 max-w-[1400px] mx-auto bg-[var(--bg-secondary)] rounded-3xl my-12 shadow-sm border border-[var(--border-color)] relative overflow-hidden"
     >
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
