@@ -43,7 +43,7 @@ const About: React.FC = () => {
     >
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
-      
+
       <div className="relative z-10">
         <div className="flex items-center gap-3 mb-8">
           <div className="h-1 w-12 bg-blue-500 rounded-full"></div>
@@ -54,11 +54,11 @@ const About: React.FC = () => {
           <div className="w-56 h-56 md:w-80 md:h-80 flex-shrink-0 relative group">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-[2.5rem] rotate-6 transform transition-transform group-hover:rotate-8 opacity-20"></div>
             <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-[2.5rem] -rotate-3 transform transition-transform group-hover:-rotate-6 opacity-10"></div>
-              <img
-                src="/profile.jpg"
-                alt="Uday"
-                className="absolute inset-0 w-full h-full object-cover rounded-[2.5rem] shadow-xl border-4 border-[var(--bg-secondary)]"
-              />
+            <img
+              src="/profile.jpg"
+              alt="Uday"
+              className="absolute inset-0 w-full h-full object-cover rounded-[2.5rem] shadow-xl border-4 border-[var(--bg-secondary)]"
+            />
           </div>
 
           <div className="flex-1 space-y-8">
@@ -67,10 +67,10 @@ const About: React.FC = () => {
                 I am a results-driven <span className="text-[var(--text-primary)] font-bold decoration-blue-500/30 underline decoration-4 underline-offset-4">Electronics & Communication Engineering</span> student with a passion for building innovative solutions at the intersection of hardware and software.
               </p>
               <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                Currently pursuing my B.Tech at <span className="font-semibold text-[var(--text-primary)]">Kuppam Engineering College</span> (GPA: 7.6), I specialize in <span className="font-semibold text-[var(--text-primary)]">IoT Systems, VLSI Design, and Embedded Engineering</span>. I am dedicated to developing creative, scalable solutions that solve real-world challenges through technical innovation and disciplined leadership.
+                Currently pursuing my B.Tech at <span className="font-semibold text-[var(--text-primary)]">Kuppam Engineering College</span> (GPA: 7.9), I specialize in <span className="font-semibold text-[var(--text-primary)]">IoT Systems, VLSI Design, and Embedded Engineering</span>. I am dedicated to developing creative, scalable solutions that solve real-world challenges through technical innovation and disciplined leadership.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
               <div className="p-5 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-color)] group hover:border-blue-400/50 transition-colors">
                 <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-600 mb-3 group-hover:scale-110 transition-transform">
