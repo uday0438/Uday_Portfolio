@@ -1,9 +1,11 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
 
 /* ===== Custom Tailwind v4 Theme ===== */
 @theme {
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Playfair Display', serif;
+  --font-homemade: 'Homemade Apple', cursive;
 }
 
 /* ===== CSS Variables for Light/Dark Theming ===== */
@@ -26,18 +28,18 @@
 }
 
 .dark {
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-card: #1e293b;
-  --text-primary: #f1f5f9;
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0f;
+  --bg-card: rgba(10, 10, 15, 0.35);
+  --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
-  --border-color: #334155;
-  --scrollbar-thumb: #475569;
-  --nav-bg: rgba(15, 23, 42, 0.85);
-  --chip-bg: #334155;
-  --chip-text: #e2e8f0;
-  --chip-hover: #475569;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --scrollbar-thumb: #1e293b;
+  --nav-bg: rgba(10, 10, 15, 0.45);
+  --chip-bg: #111118;
+  --chip-text: #cbd5e1;
+  --chip-hover: #1e1e26;
 }
 
 /* ===== Base Styles ===== */

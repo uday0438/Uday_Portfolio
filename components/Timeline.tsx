@@ -33,7 +33,7 @@ const timelineData: TimelineItem[] = [
     {
         year: "2022-26",
         title: "B.Tech in ECE",
-        subtitle: "Kuppam Engineering College — GPA: 7.6",
+        subtitle: "Kuppam Engineering College — GPA: 7.9",
         description: "Pursuing Electronics and Communication Engineering with a focus on digital electronics, VLSI design, and embedded systems.",
         icon: <GraduationCap className="w-5 h-5" />,
         color: "from-blue-500 to-blue-600",
@@ -137,16 +137,21 @@ const Timeline: React.FC = () => {
     }, [selectedItem]);
 
     return (
-        <div className="py-24 px-6 md:px-12 max-w-[1400px] mx-auto">
+        <div className="py-32 px-6 md:px-12 max-w-[1400px] mx-auto relative">
             <motion.div
                 ref={headerRef}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6 }}
-                className="mb-16"
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="mb-24 text-center md:text-left flex flex-col items-center md:items-start"
             >
-                <h2 className="text-4xl font-bold text-[var(--text-primary)]">Experience & Journey</h2>
-                <p className="mt-3 text-[var(--text-secondary)] max-w-lg">
+                <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-cyan-400 mb-4 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
+                    My Milestone Timeline
+                </span>
+                <h2 className="text-5xl md:text-8xl font-black bg-gradient-to-b from-white via-white/80 to-white/20 bg-clip-text text-transparent uppercase tracking-tighter leading-none select-none font-sans">
+                    Experience & Journey
+                </h2>
+                <p className="mt-6 text-base md:text-lg text-white/50 max-w-xl leading-relaxed font-medium">
                     My path from student to aspiring design engineer.
                 </p>
             </motion.div>

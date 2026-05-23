@@ -8,6 +8,7 @@ import Certifications from './components/Certifications';
 import About from './components/About';
 import Timeline from './components/Timeline';
 import Contact from './components/Contact';
+import SpaceBackground from './components/SpaceBackground';
 
 // Theme Context
 interface ThemeContextType {
@@ -54,14 +55,15 @@ const App: React.FC = () => {
 
   return (
     <ThemeContext.Provider value={{ isDark, toggleTheme }}>
-      <div className={`min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] selection:bg-cyan-200/30 selection:text-cyan-900 dark:selection:text-cyan-100`}>
+      <div className={`min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] selection:bg-cyan-200/30 selection:text-cyan-900 dark:selection:text-cyan-100 relative overflow-hidden`}>
+        <SpaceBackground />
         <AnimatePresence>
           {showIntro && <Intro />}
         </AnimatePresence>
 
         <Navbar />
         
-        <main className={showIntro ? 'opacity-0' : 'animate-fade-in-up'}>
+        <main className={showIntro ? 'opacity-0' : 'animate-fade-in-up relative z-10'}>
           <section id="home">
             <Hero />
           </section>

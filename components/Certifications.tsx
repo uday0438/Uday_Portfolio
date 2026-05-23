@@ -249,17 +249,22 @@ const Certifications: React.FC = () => {
     };
 
     return (
-        <div className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+        <div className="py-32 px-6 md:px-12 max-w-[1400px] mx-auto">
             <motion.div
                 ref={headerRef}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6 }}
-                className="mb-16"
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="mb-24 text-center md:text-left flex flex-col items-center md:items-start"
             >
-                <h2 className="text-4xl font-bold text-[var(--text-primary)]">Certifications & Achievements</h2>
-                <p className="mt-3 text-[var(--text-secondary)] max-w-lg">
-                    Continuous learning through industry-recognized certifications and competitive wins.
+                <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-purple-400 mb-4 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">
+                    Credentials & Honors
+                </span>
+                <h2 className="text-5xl md:text-8xl font-black bg-gradient-to-b from-white via-white/80 to-white/20 bg-clip-text text-transparent uppercase tracking-tighter leading-none select-none font-sans">
+                    Certificates
+                </h2>
+                <p className="mt-6 text-base md:text-lg text-white/50 max-w-xl leading-relaxed font-medium">
+                    Continuous learning through industry-recognized certifications and competitive hackathon wins.
                 </p>
             </motion.div>
 
@@ -334,7 +339,7 @@ const Certifications: React.FC = () => {
                                 initial={{ opacity: 0, scale: 0.9, y: 30 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 30 }}
-                                className="relative w-full max-w-6xl h-full max-h-[90vh] bg-slate-900 rounded-[2.5rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.8)] flex flex-col md:flex-row border border-white/10"
+                                className="relative w-full max-w-6xl h-auto md:h-full max-h-[95vh] md:max-h-[90vh] bg-slate-900 rounded-[2.5rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.8)] flex flex-col md:flex-row border border-white/10 overflow-y-auto md:overflow-hidden"
                             >
                                 {/* Close button */}
                                 <button
@@ -363,7 +368,7 @@ const Certifications: React.FC = () => {
                                 </div>
 
                                 {/* Right Side: Images (Slider) */}
-                                <div className="flex-1 relative bg-black/20">
+                                <div className="flex-1 min-h-[350px] md:min-h-0 relative bg-black/20">
                                     <div className="absolute inset-0 flex items-center justify-center p-4 md:p-12">
                                         <AnimatePresence mode="wait">
                                             <motion.img

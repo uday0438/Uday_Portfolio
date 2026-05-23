@@ -45,9 +45,13 @@ const About: React.FC = () => {
       <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
 
       <div className="relative z-10">
-        <div className="flex items-center gap-3 mb-8">
-          <div className="h-1 w-12 bg-blue-500 rounded-full"></div>
-          <h2 className="text-4xl font-bold font-serif text-[var(--text-primary)]">About Me</h2>
+        <div className="mb-24 text-center md:text-left flex flex-col items-center md:items-start">
+          <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-emerald-400 mb-4 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+            Personal Story
+          </span>
+          <h2 className="text-5xl md:text-8xl font-black bg-gradient-to-b from-white via-white/80 to-white/20 bg-clip-text text-transparent uppercase tracking-tighter leading-none select-none font-sans">
+            About Me
+          </h2>
         </div>
 
         <div className="flex flex-col md:flex-row gap-16 items-center md:items-start text-center md:text-left">
@@ -62,12 +66,12 @@ const About: React.FC = () => {
           </div>
 
           <div className="flex-1 space-y-8">
-            <div className="space-y-4">
+            <div className="space-y-4 font-homemade tracking-wide">
               <p className="text-xl text-[var(--text-secondary)] leading-relaxed font-medium">
-                I am a results-driven <span className="text-[var(--text-primary)] font-bold decoration-blue-500/30 underline decoration-4 underline-offset-4">Electronics & Communication Engineering</span> student with a passion for building innovative solutions at the intersection of hardware and software.
+                I am a results-driven <span className="text-[var(--text-primary)] font-bold decoration-blue-500/30 underline decoration-4 underline-offset-4">Electronics and Communication Engineering</span> student at <span className="font-semibold text-[var(--text-primary)]">Kuppam Engineering College</span> (GPA: 7.9) with a proven foundation in hardware-software integration. Specializing in <span className="font-semibold text-[var(--text-primary)]">IoT Systems, VLSI Design, and Embedded Engineering</span>, I focus on building scalable architectures that address complex, real-world challenges.
               </p>
               <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                Currently pursuing my B.Tech at <span className="font-semibold text-[var(--text-primary)]">Kuppam Engineering College</span> (GPA: 7.9), I specialize in <span className="font-semibold text-[var(--text-primary)]">IoT Systems, VLSI Design, and Embedded Engineering</span>. I am dedicated to developing creative, scalable solutions that solve real-world challenges through technical innovation and disciplined leadership.
+                My work centers on deploying intelligent, automated frameworks—such as integrating <span className="font-semibold text-[var(--text-primary)]">Edge-AI</span> for high-accuracy recognition systems and developing sustainable, <span className="font-semibold text-[var(--text-primary)]">AI-powered environmental solutions</span>. Through rigorous research, technical innovation, and hackathon-validated development, I am dedicated to bridging the gap between theoretical engineering and practical, high-impact technologies.
               </p>
             </div>
 
