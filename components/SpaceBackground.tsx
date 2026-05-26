@@ -151,7 +151,11 @@ const SpaceBackground: React.FC = () => {
         // Wrap coordinates to loop infinitely
         actualY = ((actualY % height) + height) % height;
         
-        c.fillStyle = this.color + this.alpha + ')';
+        const isDarkTheme = document.documentElement.classList.contains('dark');
+        const starColorStr = isDarkTheme ? this.color : 'rgba(59, 130, 246, ';
+        const starAlpha = isDarkTheme ? this.alpha : this.alpha * 0.45;
+
+        c.fillStyle = starColorStr + starAlpha + ')';
         c.beginPath();
         c.arc(this.x, actualY, this.size, 0, Math.PI * 2);
         c.fill();
@@ -193,10 +197,15 @@ const SpaceBackground: React.FC = () => {
         let actualY = this.y - py * this.parallaxFactor;
         actualY = ((actualY % height) + height) % height;
 
+        const isDarkTheme = document.documentElement.classList.contains('dark');
+        const color1 = isDarkTheme ? 'rgba(96, 165, 250, ' : 'rgba(59, 130, 246, ';
+        const color2 = isDarkTheme ? 'rgba(139, 92, 246, ' : 'rgba(139, 92, 246, ';
+        const dustAlpha = isDarkTheme ? this.alpha : this.alpha * 0.4;
+
         // Draw soft glow dust
         const glow = c.createRadialGradient(this.x, actualY, 0, this.x, actualY, this.size * 2);
-        glow.addColorStop(0, `rgba(96, 165, 250, ${this.alpha})`);
-        glow.addColorStop(0.5, `rgba(139, 92, 246, ${this.alpha * 0.3})`);
+        glow.addColorStop(0, `${color1}${dustAlpha})`);
+        glow.addColorStop(0.5, `${color2}${dustAlpha * 0.3})`);
         glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
         c.fillStyle = glow;
@@ -214,8 +223,9 @@ const SpaceBackground: React.FC = () => {
     const render = () => {
       time++;
       
-      // Black Base Background (#050505)
-      ctx.fillStyle = '#050505';
+      const isDarkTheme = document.documentElement.classList.contains('dark');
+      // Base Background Color (Black in dark mode, light gray in light mode)
+      ctx.fillStyle = isDarkTheme ? '#050505' : '#FAFAFA';
       ctx.fillRect(0, 0, width, height);
 
       // Smooth mouse spring interpolation
@@ -242,9 +252,15 @@ const SpaceBackground: React.FC = () => {
         const cx = orb.x + mouseShiftX;
         const cy = orb.y + mouseShiftY + scrollShiftY;
 
+        const isDarkTheme = document.documentElement.classList.contains('dark');
+        // Reduce opacity in light mode to keep background clean
+        const baseColor = isDarkTheme 
+          ? orb.color 
+          : orb.color.replace('0.08', '0.03').replace('0.09', '0.03').replace('0.06', '0.02').replace('0.04', '0.015');
+
         const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, orb.radius);
-        grad.addColorStop(0, orb.color);
-        grad.addColorStop(0.5, orb.color.replace('0.', '0.04'));
+        grad.addColorStop(0, baseColor);
+        grad.addColorStop(0.5, baseColor.replace('0.', '0.04'));
         grad.addColorStop(1, 'rgba(0,0,0,0)');
 
         ctx.fillStyle = grad;
@@ -253,10 +269,11 @@ const SpaceBackground: React.FC = () => {
         ctx.fill();
       });
 
-      // 2. Interactive Mouse Spotlight Glow
+      const cursorGlowColor1 = isDarkTheme ? 'rgba(96, 165, 250, 0.04)' : 'rgba(59, 130, 246, 0.05)';
+      const cursorGlowColor2 = isDarkTheme ? 'rgba(139, 92, 246, 0.02)' : 'rgba(139, 92, 246, 0.02)';
       const cursorGlow = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 300);
-      cursorGlow.addColorStop(0, 'rgba(96, 165, 250, 0.04)'); // Soft ambient cyan cursor light
-      cursorGlow.addColorStop(0.5, 'rgba(139, 92, 246, 0.02)');
+      cursorGlow.addColorStop(0, cursorGlowColor1);
+      cursorGlow.addColorStop(0.5, cursorGlowColor2);
       cursorGlow.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = cursorGlow;
       ctx.beginPath();
@@ -291,8 +308,7 @@ const SpaceBackground: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-0 pointer-events-none overflow-hidden select-none bg-[#050505]"
-      style={{ mixBlendMode: 'screen' }}
+      className="fixed inset-0 z-0 pointer-events-none overflow-hidden select-none bg-[var(--bg-primary)]"
     >
       <canvas ref={canvasRef} className="absolute inset-0 block w-full h-full" />
     </div>

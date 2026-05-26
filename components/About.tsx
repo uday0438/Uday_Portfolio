@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Cpu, Code2, PenTool, Database, Laptop, Radio } from 'lucide-react';
+import { useTheme } from '../App';
 
 const About: React.FC = () => {
+  const { isDark } = useTheme();
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const skillsRef = useRef<HTMLDivElement>(null);
@@ -17,7 +19,7 @@ const About: React.FC = () => {
     const variantClasses = {
       default: "bg-[var(--chip-bg)] text-[var(--chip-text)] hover:shadow-md hover:shadow-blue-500/10 dark:hover:shadow-blue-900/20 border border-transparent hover:border-blue-400/30",
       accent: "bg-blue-50 text-blue-700 dark:bg-blue-900/10 dark:text-blue-300 border border-blue-100 dark:border-blue-800/50 hover:bg-blue-100 dark:hover:bg-blue-900/20",
-      outline: "bg-white dark:bg-[#1e293b] text-[var(--text-secondary)] border border-[var(--border-color)] hover:border-purple-400/50 hover:text-purple-600 dark:hover:text-purple-400",
+      outline: "bg-purple-50 text-purple-700 border border-purple-100 hover:bg-purple-100 dark:bg-purple-900/10 dark:text-purple-300 dark:border-purple-800/50 dark:hover:bg-purple-900/20",
     };
 
     return (
@@ -46,10 +48,13 @@ const About: React.FC = () => {
 
       <div className="relative z-10">
         <div className="mb-24 text-center md:text-left flex flex-col items-center md:items-start">
-          <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-emerald-400 mb-4 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+          <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-emerald-600 dark:text-emerald-400 mb-4 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
             Personal Story
           </span>
-          <h2 className="text-5xl md:text-8xl font-black bg-gradient-to-b from-white via-white/80 to-white/20 bg-clip-text text-transparent uppercase tracking-tighter leading-none select-none font-sans">
+          <h2 
+            style={{ color: isDark ? '#ffffff' : '#0f172a' }}
+            className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none select-none font-sans"
+          >
             About Me
           </h2>
         </div>

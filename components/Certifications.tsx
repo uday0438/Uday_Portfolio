@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { Award, BookOpen, Trophy, Star, Wifi, Cpu, Code, ChevronLeft, ChevronRight, X, Lightbulb } from 'lucide-react';
+import { useTheme } from '../App';
 
 interface Certification {
     title: string;
@@ -217,6 +218,7 @@ The conference, organized by the Department of ECE & EEE, provided an excellent 
 ];
 
 const Certifications: React.FC = () => {
+    const { isDark } = useTheme();
     const headerRef = useRef<HTMLDivElement>(null);
     const isHeaderInView = useInView(headerRef, { once: true });
     const certsRef = useRef<HTMLDivElement>(null);
@@ -250,23 +252,20 @@ const Certifications: React.FC = () => {
 
     return (
         <div className="py-32 px-6 md:px-12 max-w-[1400px] mx-auto">
-            <motion.div
-                ref={headerRef}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="mb-24 text-center md:text-left flex flex-col items-center md:items-start"
-            >
-                <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-purple-400 mb-4 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">
+            <div ref={headerRef} className="mb-24 text-center md:text-left flex flex-col items-center md:items-start">
+                <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-purple-600 dark:text-purple-400 mb-4 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">
                     Credentials & Honors
                 </span>
-                <h2 className="text-5xl md:text-8xl font-black bg-gradient-to-b from-white via-white/80 to-white/20 bg-clip-text text-transparent uppercase tracking-tighter leading-none select-none font-sans">
+                <h2 
+                    style={{ color: isDark ? '#ffffff' : '#0f172a' }}
+                    className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none select-none font-sans"
+                >
                     Certificates
                 </h2>
-                <p className="mt-6 text-base md:text-lg text-white/50 max-w-xl leading-relaxed font-medium">
+                <p className="mt-6 text-base md:text-lg text-[var(--text-secondary)] max-w-xl leading-relaxed font-medium">
                     Continuous learning through industry-recognized certifications and competitive hackathon wins.
                 </p>
-            </motion.div>
+            </div>
 
             {/* Achievements */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
@@ -274,7 +273,7 @@ const Certifications: React.FC = () => {
                     <motion.div
                         key={idx}
                         initial={{ opacity: 0, y: 30 }}
-                        animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: idx * 0.15, duration: 0.6 }}
                         onClick={() => {
                             if (achievement.details) {
@@ -303,7 +302,7 @@ const Certifications: React.FC = () => {
                     <motion.div
                         key={idx}
                         initial={{ opacity: 0, y: 20 }}
-                        animate={isCertsInView ? { opacity: 1, y: 0 } : {}}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: idx * 0.08, duration: 0.5 }}
                         onClick={() => cert.image && setSelectedCertImage(cert.image)}
                         className={`flex items-start gap-3 p-4 rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)] hover:shadow-md transition-all duration-300 group ${cert.image ? 'cursor-pointer hover:border-blue-400' : ''}`}

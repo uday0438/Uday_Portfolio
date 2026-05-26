@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useInView } from 'framer-motion';
 import { GraduationCap, Briefcase, Code, Lightbulb, X } from 'lucide-react';
+import { useTheme } from '../App';
 
 interface TimelineItem {
     year: string;
@@ -48,10 +49,10 @@ const timelineData: TimelineItem[] = [
         certificateImage: "/certificates/apsche_iot.png",
     },
     {
-        year: "2025-26",
-        title: "Intern — Wiring Harness & Assemblies",
-        subtitle: "Aaviza Electronics Pvt. Ltd. (Dec 2025 - Mar 2026)",
-        description: "Trained in electrical & electronics concepts, working on wiring harness assembly and testing following quality and safety standards.",
+        year: "Dec 2025 - Mar 2026",
+        title: "INTERN – Aaviza Electronics",
+        subtitle: "Wiring Harness & Electromechanical Assemblies",
+        description: "• Trained in electrical & electronics concepts\n• Worked on wiring harness assembly and testing\n• Followed quality and safety standards",
         icon: <Briefcase className="w-5 h-5" />,
         color: "from-indigo-500 to-violet-500",
         certificateImage: "/certificates/aaviza_certificate.png",
@@ -85,10 +86,10 @@ const TimelineCard: React.FC<{
                         {item.title}
                     </h3>
                     <p className="text-sm font-medium text-blue-500 dark:text-blue-400 mt-1">{item.subtitle}</p>
-                    <p className="text-sm text-[var(--text-secondary)] mt-2 leading-relaxed">{item.description}</p>
+                    <p className="text-sm text-[var(--text-secondary)] mt-2 leading-relaxed whitespace-pre-line">{item.description}</p>
                     
                     {item.certificateImage && (
-                        <div className="mt-4 flex items-center">
+                        <div className={`mt-4 flex items-center ${isLeft ? 'md:justify-end' : 'md:justify-start'}`}>
                             <button 
                                 onClick={(e) => {
                                     e.stopPropagation();
@@ -122,6 +123,7 @@ const TimelineCard: React.FC<{
 };
 
 const Timeline: React.FC = () => {
+    const { isDark } = useTheme();
     const headerRef = useRef<HTMLDivElement>(null);
     const isHeaderInView = useInView(headerRef, { once: true });
     const [selectedItem, setSelectedItem] = useState<TimelineItem | null>(null);
@@ -138,23 +140,20 @@ const Timeline: React.FC = () => {
 
     return (
         <div className="py-32 px-6 md:px-12 max-w-[1400px] mx-auto relative">
-            <motion.div
-                ref={headerRef}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="mb-24 text-center md:text-left flex flex-col items-center md:items-start"
-            >
-                <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-cyan-400 mb-4 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
+            <div className="mb-24 text-center md:text-left flex flex-col items-center md:items-start">
+                <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-cyan-600 dark:text-cyan-400 mb-4 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
                     My Milestone Timeline
                 </span>
-                <h2 className="text-5xl md:text-8xl font-black bg-gradient-to-b from-white via-white/80 to-white/20 bg-clip-text text-transparent uppercase tracking-tighter leading-none select-none font-sans">
+                <h2 
+                    style={{ color: isDark ? '#ffffff' : '#0f172a' }}
+                    className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none select-none font-sans"
+                >
                     Experience & Journey
                 </h2>
-                <p className="mt-6 text-base md:text-lg text-white/50 max-w-xl leading-relaxed font-medium">
+                <p className="mt-6 text-base md:text-lg text-[var(--text-secondary)] max-w-xl leading-relaxed font-medium">
                     My path from student to aspiring design engineer.
                 </p>
-            </motion.div>
+            </div>
 
             {/* Timeline line */}
             <div className="relative">

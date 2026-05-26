@@ -108,9 +108,9 @@ const Navbar: React.FC = () => {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className={`pointer-events-auto flex items-center justify-between h-[58px] w-[95%] max-w-[760px] px-6 rounded-full border border-white/[0.08] transition-all duration-500 bg-[#0a0a0f]/45 backdrop-blur-[24px] ${
+          className={`pointer-events-auto flex items-center justify-between h-[58px] w-[95%] max-w-[760px] px-6 rounded-full border border-[var(--border-color)] transition-all duration-500 bg-[var(--nav-bg)] backdrop-blur-[24px] ${
             isScrolled 
-              ? 'shadow-[0_0_40px_rgba(80,120,255,0.18)] border-white/[0.12] bg-[#050508]/55' 
+              ? 'shadow-[0_0_40px_rgba(80,120,255,0.18)] border-[var(--border-color)] bg-[var(--nav-bg)]' 
               : 'shadow-[0_0_40px_rgba(80,120,255,0.1)]'
           }`}
           style={{
@@ -126,7 +126,7 @@ const Navbar: React.FC = () => {
                 className={`relative px-3.5 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-wider transition-all duration-300 ${
                   activeSection === item.id
                     ? 'text-white'
-                    : 'text-white/60 hover:text-white'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 {activeSection === item.id && (
@@ -148,7 +148,7 @@ const Navbar: React.FC = () => {
               href="/resume.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-white/[0.08] hover:border-blue-500/50 bg-white/[0.03] hover:bg-white/[0.08] text-white/70 hover:text-white transition-all text-[11px] font-semibold uppercase tracking-wider"
+              className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-[var(--border-color)] hover:border-blue-500/50 bg-[var(--chip-bg)] hover:bg-[var(--chip-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all text-[11px] font-semibold uppercase tracking-wider"
             >
               <span>Resume</span>
               <ArrowUpRight size={12} className="opacity-60" />
@@ -157,7 +157,7 @@ const Navbar: React.FC = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="w-8.5 h-8.5 flex items-center justify-center rounded-full border border-white/[0.08] hover:border-blue-500/50 bg-white/[0.03] hover:bg-white/[0.08] text-white/60 hover:text-white transition-all"
+              className="w-8.5 h-8.5 flex items-center justify-center rounded-full border border-[var(--border-color)] hover:border-blue-500/50 bg-[var(--chip-bg)] hover:bg-[var(--chip-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all"
               aria-label="Toggle dark mode"
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -176,7 +176,7 @@ const Navbar: React.FC = () => {
             {/* Mobile Burger Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden w-8.5 h-8.5 flex items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-white/60 hover:text-white"
+              className="md:hidden w-8.5 h-8.5 flex items-center justify-center rounded-full border border-[var(--border-color)] bg-[var(--chip-bg)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X size={15} /> : <Menu size={15} />}
@@ -206,7 +206,7 @@ const Navbar: React.FC = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 26, stiffness: 220 }}
-              className="absolute right-0 top-0 h-full w-[280px] bg-[#0a0a0f]/80 backdrop-blur-[24px] border-l border-white/[0.08] shadow-2xl pt-28 px-6 flex flex-col justify-between pb-10"
+              className="absolute right-0 top-0 h-full w-[280px] bg-[var(--bg-secondary)] backdrop-blur-[24px] border-l border-[var(--border-color)] shadow-2xl pt-28 px-6 flex flex-col justify-between pb-10"
             >
               <div className="space-y-3">
                 {navItems.map((item, idx) => (
@@ -219,7 +219,7 @@ const Navbar: React.FC = () => {
                     className={`block w-full text-left px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all ${
                       activeSection === item.id
                         ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-[0_0_15px_rgba(139,92,246,0.3)]'
-                        : 'text-white/60 hover:bg-white/[0.04] hover:text-white'
+                        : 'text-[var(--text-secondary)] hover:bg-[var(--chip-hover)] hover:text-[var(--text-primary)]'
                     }`}
                   >
                     {item.label}
@@ -239,7 +239,7 @@ const Navbar: React.FC = () => {
                   href="/resume.html"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl border border-white/[0.08] bg-white/[0.02] text-white/70 hover:text-white transition-all text-xs font-bold uppercase tracking-widest"
+                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl border border-[var(--border-color)] bg-[var(--chip-bg)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all text-xs font-bold uppercase tracking-widest"
                 >
                   <span>Download Resume</span>
                   <ArrowUpRight size={14} />

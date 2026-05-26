@@ -1,6 +1,7 @@
 import React, { useRef, MouseEvent, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Cpu, Wifi, Droplets, Eye, Leaf, Sprout, ShoppingBag, X, CheckCircle2, AlertCircle, Lightbulb } from 'lucide-react';
+import { useTheme } from '../App';
 
 interface Project {
   id: number;
@@ -23,6 +24,123 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    id: 9,
+    title: "Smart Attendance (Raspberry Pi)",
+    category: "Computer Vision & IoT",
+    description: "Advanced facial recognition attendance system utilizing a Raspberry Pi and webcam for robust and scalable deployment.",
+    tags: ["Raspberry Pi", "Webcam", "Python", "OpenCV"],
+    gradient: "from-indigo-500/10 to-violet-500/10",
+    glowColor: "rgba(99, 102, 241, 0.15)",
+    icon: <Eye className="w-6 h-6 text-indigo-400" />,
+    github: "https://github.com/uday0438/Smart_Attendance_Raspi.git",
+    demo: "https://smart-attendance-raspi.vercel.app/",
+    thumbnailGradient: "from-indigo-600 via-violet-950 to-slate-950",
+    image: "/smart_attendance_raspi_banner.png",
+    details: {
+      challenge: "Scaling contactless attendance for larger institutions requires higher processing power, better camera resolution, and more robust database management than microcontroller-based solutions can provide.",
+      solution: "Engineered a comprehensive attendance solution using a Raspberry Pi paired with a standard webcam. Leveraged OpenCV and Python for accurate facial recognition, enabling faster processing of multiple faces and more complex data handling.",
+      results: [
+        "Capable of recognizing multiple faces in a single frame",
+        "Enhanced image processing capabilities using Python and OpenCV",
+        "Robust local database logging before cloud synchronization",
+        "Scalable architecture suitable for institutional implementation"
+      ]
+    }
+  },
+  {
+    id: 7,
+    title: "SilkArt Website",
+    category: "Craft E-Commerce",
+    description: "Static E-commerce Website showcasing traditional craftsmanship with modern visual UI.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    gradient: "from-pink-500/10 to-rose-500/10",
+    glowColor: "rgba(244, 63, 94, 0.15)",
+    icon: <ShoppingBag className="w-6 h-6 text-pink-400" />,
+    github: "https://github.com/uday0438/SilkArt",
+    demo: "https://silkart.vercel.app/",
+    thumbnailGradient: "from-pink-600 via-rose-950 to-slate-950",
+    image: "/silk_art.png",
+    details: {
+      challenge: "Local traditional silk artisans lack a digital presence to compete with large automated e-commerce platforms.",
+      solution: "Created a visually stunning, lightweight static website that focuses on the 'story' of the silk, using high-resolution imagery and elegant typography.",
+      results: [
+        "Optimized for 100/100 Lighthouse performance",
+        "SEO-friendly semantic HTML structure",
+        "Custom image gallery with smooth transitions",
+        "Fully responsive layout for mobile shoppers"
+      ]
+    }
+  },
+  {
+    id: 1,
+    title: "Contactless Attendance (ESP32)",
+    category: "Edge AI & Embedded",
+    description: "Face-recognition based attendance system using ESP32 and HuskyLens AI camera, automatically logging data to Google Sheets.",
+    tags: ["ESP-32", "HuskyLens", "Google Sheets API"],
+    gradient: "from-blue-500/10 to-cyan-500/10",
+    glowColor: "rgba(59, 130, 246, 0.15)",
+    icon: <Eye className="w-6 h-6 text-cyan-400" />,
+    github: "https://github.com/uday0438/Smart_Attendance_System.git",
+    thumbnailGradient: "from-cyan-600 via-blue-950 to-slate-950",
+    image: "/smart_attendance_banner.jpg",
+    details: {
+      challenge: "Manual attendance marking in classrooms is time-consuming and prone to proxy errors. Traditional biometric systems require physical contact, which is unhygienic.",
+      solution: "Developed a contactless system using the HuskyLens AI vision sensor paired with an ESP32. The system recognizes faces in real-time and pushes attendance data directly to a Google Sheet via a custom Apps Script API.",
+      results: [
+        "Reduced attendance marking time by 70%",
+        "Eliminated physical contact requirements",
+        "Automated reporting for faculty members",
+        "Successful field testing with a 95%+ accuracy rate"
+      ]
+    }
+  },
+  {
+    id: 2,
+    title: "Smart Door Unlocking System",
+    category: "Edge AI & IoT",
+    description: "IoT-enabled door lock with facial recognition using HuskyLens and Bluetooth connectivity via ESP32.",
+    tags: ["ESP-32", "HuskyLens", "Bluetooth"],
+    gradient: "from-purple-500/10 to-pink-500/10",
+    glowColor: "rgba(168, 85, 247, 0.15)",
+    icon: <Wifi className="w-6 h-6 text-purple-400" />,
+    github: "https://github.com/uday0438/Smart-Door-Unlock.git",
+    thumbnailGradient: "from-purple-600 via-pink-950 to-slate-950",
+    image: "/smart_door_unlock.jpg",
+    details: {
+      challenge: "Standard key-based or PIN-based locks are susceptible to unauthorized access and can be inconvenient for users who frequently lose keys.",
+      solution: "Implemented a multi-factor authentication lock. It primary uses facial recognition via HuskyLens for primary entry, with a secondary Bluetooth-app override for remote unlocking using ESP32's BLE capabilities.",
+      results: [
+        "Implemented secure facial storage locally",
+        "Created an emergency Bluetooth bypass",
+        "Real-time OLED display feedback for user status",
+        "High-torque servo integration for secure latching"
+      ]
+    }
+  },
+  {
+    id: 12,
+    title: "V2V Hazard Alert",
+    category: "IoT & Wireless",
+    description: "Infrastructure-independent LoRa-based Vehicle-to-Vehicle hazard communication system using ESP32 and SX1278 for real-time hazard alert transmission.",
+    tags: ["LoRa", "ESP32", "C++", "Wireless"],
+    gradient: "from-red-500/10 to-orange-500/10",
+    glowColor: "rgba(239, 68, 68, 0.15)",
+    icon: <AlertCircle className="w-6 h-6 text-red-400" />,
+    github: "https://github.com/uday0438/V2V-HAZARD-ALERT",
+    thumbnailGradient: "from-red-600 via-orange-950 to-slate-950",
+    image: "/v2v_banner.png",
+    details: {
+      challenge: "Drivers often lack advanced warning of road hazards like accidents or sudden braking in areas with poor cellular network coverage.",
+      solution: "Developed an infrastructure-independent Vehicle-to-Vehicle (V2V) communication system using ESP32 and SX1278 LoRa modules to establish long-range peer-to-peer connections for emergency warnings.",
+      results: [
+        "Real-Time Vehicle-to-Vehicle Hazard Communication",
+        "Infrastructure-Independent LoRa Wireless Transmission",
+        "OLED-Based Alert Visualization with Buzzer",
+        "Low power consumption architecture"
+      ]
+    }
+  },
   {
     id: 10,
     title: "Botanica AI Hub",
@@ -68,74 +186,6 @@ const projects: Project[] = [
         "Robust offline mode for campus Wi-Fi dead zones",
         "Multi-lingual turn-by-turn voice guidance",
         "Interactive SVG-based multi-floor mapping"
-      ]
-    }
-  },
-  {
-    id: 9,
-    title: "Smart Attendance (Raspberry Pi)",
-    category: "Computer Vision & IoT",
-    description: "Advanced facial recognition attendance system utilizing a Raspberry Pi and webcam for robust and scalable deployment.",
-    tags: ["Raspberry Pi", "Webcam", "Python", "OpenCV"],
-    gradient: "from-indigo-500/10 to-violet-500/10",
-    glowColor: "rgba(99, 102, 241, 0.15)",
-    icon: <Eye className="w-6 h-6 text-indigo-400" />,
-    github: "https://github.com/uday0438/Smart_Attendance_Raspi.git",
-    demo: "https://smart-attendance-raspi.vercel.app/",
-    thumbnailGradient: "from-indigo-600 via-violet-950 to-slate-950",
-    details: {
-      challenge: "Scaling contactless attendance for larger institutions requires higher processing power, better camera resolution, and more robust database management than microcontroller-based solutions can provide.",
-      solution: "Engineered a comprehensive attendance solution using a Raspberry Pi paired with a standard webcam. Leveraged OpenCV and Python for accurate facial recognition, enabling faster processing of multiple faces and more complex data handling.",
-      results: [
-        "Capable of recognizing multiple faces in a single frame",
-        "Enhanced image processing capabilities using Python and OpenCV",
-        "Robust local database logging before cloud synchronization",
-        "Scalable architecture suitable for institutional implementation"
-      ]
-    }
-  },
-  {
-    id: 1,
-    title: "Contactless Attendance (ESP32)",
-    category: "Edge AI & Embedded",
-    description: "Face-recognition based attendance system using ESP32 and HuskyLens AI camera, automatically logging data to Google Sheets.",
-    tags: ["ESP-32", "HuskyLens", "Google Sheets API"],
-    gradient: "from-blue-500/10 to-cyan-500/10",
-    glowColor: "rgba(59, 130, 246, 0.15)",
-    icon: <Eye className="w-6 h-6 text-cyan-400" />,
-    github: "https://github.com/uday0438/Smart_Attendance_System.git",
-    thumbnailGradient: "from-cyan-600 via-blue-950 to-slate-950",
-    details: {
-      challenge: "Manual attendance marking in classrooms is time-consuming and prone to proxy errors. Traditional biometric systems require physical contact, which is unhygienic.",
-      solution: "Developed a contactless system using the HuskyLens AI vision sensor paired with an ESP32. The system recognizes faces in real-time and pushes attendance data directly to a Google Sheet via a custom Apps Script API.",
-      results: [
-        "Reduced attendance marking time by 70%",
-        "Eliminated physical contact requirements",
-        "Automated reporting for faculty members",
-        "Successful field testing with a 95%+ accuracy rate"
-      ]
-    }
-  },
-  {
-    id: 2,
-    title: "Smart Door Unlocking System",
-    category: "Edge AI & IoT",
-    description: "IoT-enabled door lock with facial recognition using HuskyLens and Bluetooth connectivity via ESP32.",
-    tags: ["ESP-32", "HuskyLens", "Bluetooth"],
-    gradient: "from-purple-500/10 to-pink-500/10",
-    glowColor: "rgba(168, 85, 247, 0.15)",
-    icon: <Wifi className="w-6 h-6 text-purple-400" />,
-    github: "https://github.com/uday0438/Smart-Door-Unlock.git",
-    thumbnailGradient: "from-purple-600 via-pink-950 to-slate-950",
-    image: "/smart_door_unlock.jpg",
-    details: {
-      challenge: "Standard key-based or PIN-based locks are susceptible to unauthorized access and can be inconvenient for users who frequently lose keys.",
-      solution: "Implemented a multi-factor authentication lock. It primary uses facial recognition via HuskyLens for primary entry, with a secondary Bluetooth-app override for remote unlocking using ESP32's BLE capabilities.",
-      results: [
-        "Implemented secure facial storage locally",
-        "Created an emergency Bluetooth bypass",
-        "Real-time OLED display feedback for user status",
-        "High-torque servo integration for secure latching"
       ]
     }
   },
@@ -208,36 +258,13 @@ const projects: Project[] = [
         "High-fidelity prototype for investor pitches"
       ]
     }
-  },
-  {
-    id: 7,
-    title: "SilkArt Website",
-    category: "Craft E-Commerce",
-    description: "Static E-commerce Website showcasing traditional craftsmanship with modern visual UI.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    gradient: "from-pink-500/10 to-rose-500/10",
-    glowColor: "rgba(244, 63, 94, 0.15)",
-    icon: <ShoppingBag className="w-6 h-6 text-pink-400" />,
-    github: "https://github.com/uday0438/SilkArt",
-    demo: "https://silkart.vercel.app/",
-    thumbnailGradient: "from-pink-600 via-rose-950 to-slate-950",
-    image: "/silk_art.png",
-    details: {
-      challenge: "Local traditional silk artisans lack a digital presence to compete with large automated e-commerce platforms.",
-      solution: "Created a visually stunning, lightweight static website that focuses on the 'story' of the silk, using high-resolution imagery and elegant typography.",
-      results: [
-        "Optimized for 100/100 Lighthouse performance",
-        "SEO-friendly semantic HTML structure",
-        "Custom image gallery with smooth transitions",
-        "Fully responsive layout for mobile shoppers"
-      ]
-    }
   }
 ];
 
 
 
 const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
+  const { isDark } = useTheme();
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true, margin: "-80px" });
 
@@ -297,7 +324,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
           rotateX,
           transformStyle: "preserve-3d",
         }}
-        className="relative h-full min-h-[460px] w-full rounded-[28px] overflow-hidden bg-[#0d0d15]/35 border border-white/[0.06] hover:border-white/[0.12] transition-colors duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.4)] flex flex-col group"
+        className="relative h-full min-h-[460px] w-full rounded-[28px] overflow-hidden bg-[var(--bg-card)] border border-[var(--border-color)] dark:border-white/[0.06] hover:border-blue-500/50 dark:hover:border-white/[0.12] transition-colors duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.4)] flex flex-col group"
       >
         {/* Mouse Tracking Radial Ambient Glow Overlay */}
         <div 
@@ -308,12 +335,12 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
         />
 
         {/* Top Abstract Graphical Thumbnail Container */}
-        <div className="relative h-[210px] w-full overflow-hidden border-b border-white/[0.04]">
+        <div className="relative aspect-[5/2] w-full overflow-hidden border-b border-[var(--border-color)] bg-[var(--bg-card)]">
           {project.image ? (
             <img 
               src={project.image} 
               alt={project.title} 
-              className="absolute inset-0 w-full h-full object-contain bg-black/60 p-2 transition-transform duration-700 group-hover:scale-[1.03]" 
+              className="absolute inset-0 w-full h-full object-cover bg-[var(--bg-card)] transition-transform duration-700 group-hover:scale-[1.03]" 
             />
           ) : (
             <div className={`absolute inset-0 bg-gradient-to-tr ${project.thumbnailGradient} opacity-90 transition-transform duration-700 group-hover:scale-105`} />
@@ -324,13 +351,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
             <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
           )}
 
-          {/* Category Floating Pill Badge */}
-          <span 
-            className="absolute top-4 left-4 text-[9px] font-extrabold uppercase tracking-widest text-white/80 bg-white/10 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-full shadow-sm"
-            style={{ transform: "translateZ(30px)" }}
-          >
-            {project.category}
-          </span>
+
 
           {/* Float Icon representation */}
           {!project.image && (
@@ -351,12 +372,15 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
           style={{ transform: "translateZ(20px)" }}
         >
           {/* Title */}
-          <h3 className="text-xl font-bold text-white mb-2.5 tracking-tight group-hover:text-blue-400 transition-colors duration-300">
+          <h3 
+            style={{ color: isDark ? '#ffffff' : '#0f172a' }}
+            className="text-xl font-bold mb-2.5 tracking-tight group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300"
+          >
             {project.title}
           </h3>
 
           {/* Description */}
-          <p className="text-xs text-white/50 leading-relaxed mb-6 flex-1">
+          <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-6 flex-1">
             {project.description}
           </p>
 
@@ -367,13 +391,17 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
               {project.tags.slice(0, 3).map(tag => (
                 <span
                   key={tag}
-                  className="bg-white/[0.03] backdrop-blur-md px-2 py-0.5 rounded-md text-[9px] font-extrabold uppercase tracking-widest text-white/40 border border-white/[0.04]"
+                  style={{ color: isDark ? 'rgba(255,255,255,0.4)' : '#0f172a' }}
+                  className="bg-[var(--chip-bg)] backdrop-blur-md px-2 py-0.5 rounded-md text-[9px] font-extrabold uppercase tracking-widest border border-[var(--border-color)] dark:bg-white/[0.03] dark:border-white/[0.08]"
                 >
                   {tag}
                 </span>
               ))}
               {project.tags.length > 3 && (
-                <span className="bg-white/[0.03] px-1.5 py-0.5 rounded-md text-[9px] font-extrabold text-white/40 border border-white/[0.04]">
+                <span 
+                  style={{ color: isDark ? 'rgba(255,255,255,0.4)' : '#0f172a' }}
+                  className="bg-[var(--chip-bg)] px-1.5 py-0.5 rounded-md text-[9px] font-extrabold border border-[var(--border-color)] dark:bg-white/[0.03] dark:border-white/[0.08]"
+                >
                   +{project.tags.length - 3}
                 </span>
               )}
@@ -388,9 +416,10 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
                   rel="noopener noreferrer" 
                   title="View Code"
                   onClick={(e) => e.stopPropagation()}
-                  className="w-9 h-9 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] hover:border-blue-500/50 flex items-center justify-center text-white/70 hover:text-white transition-all shadow-md"
+                  style={{ color: isDark ? '#ffffff' : '#0f172a' }}
+                  className="w-9 h-9 rounded-full bg-[var(--chip-bg)] hover:bg-blue-600/10 border border-[var(--border-color)] hover:border-blue-500/50 flex items-center justify-center hover:text-blue-600! transition-all shadow-md dark:bg-white/[0.03] dark:hover:bg-white/[0.08] dark:border-white/[0.08]"
                 >
-                  <Github size={15} />
+                  <Github size={15} className="text-current" />
                 </a>
               )}
               {project.demo && (
@@ -400,9 +429,10 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
                   rel="noopener noreferrer" 
                   title="Live Demo"
                   onClick={(e) => e.stopPropagation()}
-                  className="w-9 h-9 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] hover:border-blue-500/50 flex items-center justify-center text-white/70 hover:text-white transition-all shadow-md"
+                  style={{ color: isDark ? '#ffffff' : '#0f172a' }}
+                  className="w-9 h-9 rounded-full bg-[var(--chip-bg)] hover:bg-blue-600/10 border border-[var(--border-color)] hover:border-blue-500/50 flex items-center justify-center hover:text-blue-600! transition-all shadow-md dark:bg-white/[0.03] dark:hover:bg-white/[0.08] dark:border-white/[0.08]"
                 >
-                  <ExternalLink size={15} />
+                  <ExternalLink size={15} className="text-current" />
                 </a>
               )}
             </div>
@@ -414,6 +444,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
 };
 
 const Projects: React.FC = () => {
+  const { isDark } = useTheme();
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true });
 
@@ -424,23 +455,20 @@ const Projects: React.FC = () => {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none -z-10" />
 
       {/* Spacious heading section */}
-      <motion.div
-        ref={headerRef}
-        initial={{ opacity: 0, y: 30 }}
-        animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="mb-24 text-center md:text-left flex flex-col items-center md:items-start"
-      >
-        <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-blue-400 mb-4 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">
+      <div className="mb-24 text-center md:text-left flex flex-col items-center md:items-start">
+        <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-blue-600 dark:text-blue-400 mb-4 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">
           Featured Works
         </span>
-        <h2 className="text-5xl md:text-8xl font-black bg-gradient-to-b from-white via-white/80 to-white/20 bg-clip-text text-transparent uppercase tracking-tighter leading-none select-none font-sans">
+        <h2 
+          style={{ color: isDark ? '#ffffff' : '#0f172a' }}
+          className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none select-none font-sans"
+        >
           Projects
         </h2>
-        <p className="mt-6 text-base md:text-lg text-white/50 max-w-xl leading-relaxed font-medium">
+        <p className="mt-6 text-base md:text-lg text-[var(--text-secondary)] max-w-xl leading-relaxed font-medium">
           A modular collection of IoT networks, computer vision setups, and embedded solutions bridging the physical and digital world.
         </p>
-      </motion.div>
+      </div>
 
       {/* Staggered Card Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">

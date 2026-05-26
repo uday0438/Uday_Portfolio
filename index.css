@@ -10,21 +10,21 @@
 
 /* ===== CSS Variables for Light/Dark Theming ===== */
 :root {
-  --bg-primary: #FAFAFA;
+  --bg-primary: #EFEFEF;
   --bg-secondary: #FFFFFF;
   --bg-card: #FFFFFF;
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --text-muted: #94a3b8;
-  --border-color: #f1f5f9;
-  --accent-blue: #3b82f6;
-  --accent-purple: #8b5cf6;
-  --accent-cyan: #06b6d4;
-  --scrollbar-thumb: #CBD5E1;
-  --nav-bg: rgba(255, 255, 255, 0.8);
-  --chip-bg: #f8fafc;
-  --chip-text: #334155;
-  --chip-hover: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #475569;
+  --border-color: #d1d5db;
+  --accent-blue: #2563eb;
+  --accent-purple: #7c3aed;
+  --accent-cyan: #0891b2;
+  --scrollbar-thumb: #9ca3af;
+  --nav-bg: rgba(239, 239, 239, 0.1);
+  --chip-bg: #e5e7eb;
+  --chip-text: #1f2937;
+  --chip-hover: #d1d5db;
 }
 
 .dark {
