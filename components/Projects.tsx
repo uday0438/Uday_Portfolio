@@ -324,7 +324,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
           rotateX,
           transformStyle: "preserve-3d",
         }}
-        className="relative h-[480px] w-full rounded-[28px] overflow-hidden bg-[var(--bg-card)] border border-[var(--border-color)] dark:border-white/[0.06] hover:border-blue-500/50 dark:hover:border-white/[0.12] transition-colors duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.4)] flex flex-col group"
+        className="relative h-full min-h-[460px] w-full rounded-[28px] overflow-hidden bg-[var(--bg-card)] border border-[var(--border-color)] dark:border-white/[0.06] hover:border-blue-500/50 dark:hover:border-white/[0.12] transition-colors duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.4)] flex flex-col group"
       >
         {/* Mouse Tracking Radial Ambient Glow Overlay */}
         <div 
@@ -335,7 +335,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
         />
 
         {/* Top Abstract Graphical Thumbnail Container */}
-        <div className="relative h-[240px] w-full overflow-hidden border-b border-[var(--border-color)] bg-[var(--bg-card)]">
+        <div className="relative aspect-[5/2] w-full overflow-hidden border-b border-[var(--border-color)] bg-[var(--bg-card)]">
           {project.image ? (
             <img 
               src={project.image} 
