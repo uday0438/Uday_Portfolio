@@ -37,14 +37,27 @@ const Hero: React.FC = () => {
   }, [displayText, isDeleting, roleIndex]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 relative pt-20">
+    <div className="min-h-screen flex flex-col items-center justify-start px-4 relative pt-24 md:pt-28 lg:pt-32 w-full max-w-[1400px] mx-auto">
+      {/* Introduction Tag - Left aligned on desktop, centered above name on mobile */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="md:absolute md:left-6 lg:left-12 md:top-[23%] md:-translate-y-1/2 flex items-center gap-2 mb-6 md:mb-0 select-none"
+      >
+        <span className="w-3 md:w-3.5 h-3 md:h-3.5 bg-[#FF4B3A] rounded-[4px] shadow-[0_0_10px_rgba(255,75,58,0.6)] animate-pulse" />
+        <span className="text-base md:text-xl font-medium text-[var(--text-secondary)] tracking-wide select-none">
+          Hey there I am,
+        </span>
+      </motion.div>
+
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
         className="text-center"
       >
-        <h1 className="font-serif text-[11.5vw] md:text-[14.4vw] leading-none text-[var(--text-primary)] italic select-none">
+        <h1 className="font-serif text-[12.65vw] md:text-[15.84vw] leading-none text-[var(--text-primary)] italic select-none">
           Uday
         </h1>
       </motion.div>
@@ -62,9 +75,11 @@ const Hero: React.FC = () => {
         <span className="typing-cursor ml-0.5 text-blue-500">&nbsp;</span>
       </motion.div>
 
-      <div className="flex flex-col md:flex-row justify-between w-full max-w-[1400px] mt-12 px-4 md:px-0 gap-8">
+      {/* Midsection (Beside image layout on desktop, stacked on mobile) */}
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-[1400px] mt-8 md:mt-4 px-4 md:px-0 gap-6 lg:gap-12 select-none">
+        {/* Left Column Description */}
         <motion.div
-          className="flex-1 max-w-sm"
+          className="flex-1 max-w-xs text-center md:text-left order-2 md:order-1 md:translate-y-10"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
@@ -74,8 +89,23 @@ const Hero: React.FC = () => {
           </p>
         </motion.div>
 
+        {/* Center Column Illustration */}
         <motion.div
-          className="flex-1 max-w-sm md:text-right"
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
+          className="max-w-[390px] md:max-w-[440px] lg:max-w-[480px] w-full px-4 order-1 md:order-2 flex justify-center animate-fade-in md:translate-y-6"
+        >
+          <img 
+            src="/working-illustration-color.png" 
+            alt="Uday Bunny working illustration" 
+            className="w-full h-auto object-contain select-none drop-shadow-[0_15px_35px_rgba(0,0,0,0.06)] dark:drop-shadow-[0_15px_35px_rgba(255,255,255,0.015)]"
+          />
+        </motion.div>
+
+        {/* Right Column Description */}
+        <motion.div
+          className="flex-1 max-w-xs text-center md:text-right order-3 md:translate-y-10"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 1 }}

@@ -86,7 +86,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Top Left Logo */}
-      <div className="fixed top-6 left-6 md:left-12 z-[60] h-[58px] flex items-center">
+      <div className="fixed top-6 left-6 md:left-[1in] z-[60] h-[58px] flex items-center">
         <div
           className="text-3xl font-black tracking-widest bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent cursor-pointer hover:scale-105 transition-all duration-300 drop-shadow-[0_0_15px_rgba(80,120,255,0.2)] select-none"
           onClick={() => scrollToSection('home')}
