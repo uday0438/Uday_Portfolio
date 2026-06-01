@@ -85,7 +85,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 1 }}
         >
           <p className="text-[var(--text-muted)] text-sm md:text-base leading-relaxed uppercase tracking-wide font-medium">
-            An <span className="text-[var(--text-primary)] font-bold">ECE student</span> turning complex problems into clear, impactful engineering solutions.
+            An <span className="text-[var(--text-primary)] font-bold">ECE graduate</span> turning complex problems into clear, impactful engineering solutions.
           </p>
         </motion.div>
 

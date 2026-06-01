@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
       }
 
       // Update active section
-      const sections = ['home', 'projects', 'certifications', 'about', 'experience', 'contact'];
+      const sections = ['home', 'projects', 'certifications', 'about', 'achievements', 'experience', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -72,8 +72,9 @@ const Navbar: React.FC = () => {
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'projects', label: 'Projects' },
-    { id: 'certifications', label: 'Certifications' },
+    { id: 'certifications', label: 'Certificates' },
     { id: 'about', label: 'About' },
+    { id: 'achievements', label: 'Achievements' },
     { id: 'experience', label: 'Experience' },
     { id: 'contact', label: 'Contact' },
   ];
@@ -100,7 +101,7 @@ const Navbar: React.FC = () => {
         
         {/* Soft Ambient Glow Behind Navbar */}
         <div 
-          className="absolute h-[62px] w-[95%] max-w-[760px] rounded-full blur-[20px] bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10 -z-10 transition-opacity duration-500" 
+          className="absolute h-[62px] w-[95%] max-w-[920px] rounded-full blur-[20px] bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10 -z-10 transition-opacity duration-500" 
           style={{ opacity: isScrolled ? 1 : 0.4 }}
         />
 
@@ -108,7 +109,7 @@ const Navbar: React.FC = () => {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className={`pointer-events-auto flex items-center justify-between h-[58px] w-[95%] max-w-[760px] px-6 rounded-full border border-[var(--border-color)] transition-all duration-500 bg-[var(--nav-bg)] backdrop-blur-[24px] ${
+          className={`pointer-events-auto flex items-center justify-between h-[58px] w-[95%] max-w-[920px] px-6 rounded-full border border-[var(--border-color)] transition-all duration-500 bg-[var(--nav-bg)] backdrop-blur-[24px] ${
             isScrolled 
               ? 'shadow-[0_0_40px_rgba(80,120,255,0.18)] border-[var(--border-color)] bg-[var(--nav-bg)]' 
               : 'shadow-[0_0_40px_rgba(80,120,255,0.1)]'
@@ -118,7 +119,7 @@ const Navbar: React.FC = () => {
           }}
         >
           {/* Desktop Nav Items */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -176,7 +177,7 @@ const Navbar: React.FC = () => {
             {/* Mobile Burger Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden w-8.5 h-8.5 flex items-center justify-center rounded-full border border-[var(--border-color)] bg-[var(--chip-bg)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              className="lg:hidden w-8.5 h-8.5 flex items-center justify-center rounded-full border border-[var(--border-color)] bg-[var(--chip-bg)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X size={15} /> : <Menu size={15} />}
@@ -192,7 +193,7 @@ const Navbar: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 md:hidden"
+            className="fixed inset-0 z-50 lg:hidden"
           >
             {/* Dark Blur Overlay */}
             <motion.div

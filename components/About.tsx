@@ -10,9 +10,9 @@ const About: React.FC = () => {
   const skillsRef = useRef<HTMLDivElement>(null);
   const skillsInView = useInView(skillsRef, { once: true, margin: "-50px" });
 
-  const technicalSkills = ['Digital Electronics', 'VLSI Design', 'Soldering', 'Embedded Systems', 'PCB Design', 'Arduino', 'Circuit Design', 'IoT Systems', 'Microcontrollers (ESP32, 8051)'];
+  const technicalSkills = ['Embedded Systems', 'VLSI Design', 'Soldering', 'Digital Electronics', 'Automotive Electronics', 'PCB Design', 'Arduino', 'Circuit Design'];
   const programmingLangs = ['Python', 'C', 'HTML/CSS', 'JavaScript'];
-  const softwareTools = ['Keil uVision', 'MATLAB', 'Proteus', 'OrCAD', 'MultiSim', 'VS Code', 'Arduino IDE'];
+  const softwareTools = ['OrCAD', 'Keil', 'MATLAB', 'ArduinoIDE', 'Proteus', 'ModelSim', 'AutoCAD'];
 
   const SkillChip: React.FC<{ skill: string; delay: number; variant?: 'default' | 'accent' | 'outline' }> = ({ skill, delay, variant = 'default' }) => {
     const baseClasses = "px-5 py-2.5 rounded-xl text-sm font-semibold cursor-default transition-all duration-300";
@@ -73,10 +73,10 @@ const About: React.FC = () => {
           <div className="flex-1 space-y-8">
             <div className="space-y-4 font-homemade tracking-wide">
               <p className="text-xl text-[var(--text-secondary)] leading-relaxed font-medium">
-                I am a results-driven <span className="text-[var(--text-primary)] font-bold decoration-blue-500/30 underline decoration-4 underline-offset-4">Electronics and Communication Engineering</span> student at <span className="font-semibold text-[var(--text-primary)]">Kuppam Engineering College</span> (GPA: 7.9) with a proven foundation in hardware-software integration. Specializing in <span className="font-semibold text-[var(--text-primary)]">IoT Systems, VLSI Design, and Embedded Engineering</span>, I focus on building scalable architectures that address complex, real-world challenges.
+                I am a results-driven <span className="text-[var(--text-primary)] font-bold decoration-blue-500/30 underline decoration-4 underline-offset-4">Electronics and Communication Engineering</span> graduate from <span className="font-semibold text-[var(--text-primary)]">Kuppam Engineering College</span> (GPA: 7.9) with a strong foundation in automotive electronics, embedded systems, and industrial automation. I have a focused commitment to smart mobility solutions and hardware-software integration.
               </p>
               <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                My work centers on deploying intelligent, automated frameworks—such as integrating <span className="font-semibold text-[var(--text-primary)]">Edge-AI</span> for high-accuracy recognition systems and developing sustainable, <span className="font-semibold text-[var(--text-primary)]">AI-powered environmental solutions</span>. Through rigorous research, technical innovation, and hackathon-validated development, I am dedicated to bridging the gap between theoretical engineering and practical, high-impact technologies.
+                My work centers on rapid prototyping, AI-assisted development, and connected systems. Through my electromechanical assembly and testing internship at <span className="font-semibold text-[var(--text-primary)]">Aaviza Electronics</span>, national hackathons, and research, I am dedicated to bridging the gap between theoretical electrical concepts and high-impact, real-world engineering solutions.
               </p>
             </div>
 

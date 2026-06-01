@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Certifications from './components/Certifications';
 import About from './components/About';
+import Achievements from './components/Achievements';
 import Timeline from './components/Timeline';
 import Contact from './components/Contact';
 import SpaceBackground from './components/SpaceBackground';
@@ -75,6 +76,9 @@ const App: React.FC = () => {
           </section>
           <section id="about">
             <About />
+          </section>
+          <section id="achievements">
+            <Achievements />
           </section>
           <section id="experience">
             <Timeline />
