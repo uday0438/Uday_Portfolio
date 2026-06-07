@@ -1,6 +1,6 @@
 import React, { useRef, MouseEvent, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useInView, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Cpu, Wifi, Droplets, Eye, Leaf, Sprout, ShoppingBag, X, CheckCircle2, AlertCircle, Lightbulb } from 'lucide-react';
+import { ExternalLink, Github, Cpu, Wifi, Droplets, Eye, Leaf, Sprout, ShoppingBag, X, CheckCircle2, AlertCircle, Lightbulb, Siren, Compass } from 'lucide-react';
 import { useTheme } from '../App';
 
 interface Project {
@@ -256,6 +256,54 @@ const projects: Project[] = [
         "Simulated AI scanning experience",
         "Educational 'Green Tips' database integration",
         "High-fidelity prototype for investor pitches"
+      ]
+    }
+  },
+  {
+    id: 13,
+    title: "Road-SOS",
+    category: "AI & IoT Road Safety",
+    description: "AI & IoT-powered post-crash emergency response ecosystem integrating real-time telemetry, geographic maps, and Google Gemini AI diagnostics to optimize the Golden Hour.",
+    tags: ["React", "Express.js", "Gemini AI", "Leaflet"],
+    gradient: "from-red-500/10 to-rose-500/10",
+    glowColor: "rgba(239, 68, 68, 0.15)",
+    icon: <Siren className="w-6 h-6 text-red-400" />,
+    github: "https://github.com/uday0438/Road-sos.git",
+    demo: "https://road-sos-wheat.vercel.app/",
+    thumbnailGradient: "from-red-600 via-rose-950 to-slate-950",
+    image: "/road_sos.png",
+    details: {
+      challenge: "The Golden Hour of post-crash response is critical. Delays in crash detection, lack of real-time severity details, and fragmented emergency routing lead to preventable fatalities.",
+      solution: "Engineered an integrated software-hardware ecosystem that uses Leaflet map visualizations and Google Gemini AI to analyze mock vehicle sensor telemetry. It auto-generates diagnostic triage checklists and coordinates instant dispatch.",
+      results: [
+        "Autonomous accident triage with simulated real-time crash telemetry",
+        "AI incident diagnostics generating structured checklists with Gemini 2.0 Flash",
+        "Interactive Leaflet maps tracking crash sites and emergency units",
+        "Vercel Serverless Function architecture for robust API routing"
+      ]
+    }
+  },
+  {
+    id: 14,
+    title: "Campus Compass",
+    category: "Spatial UI/UX & Web Portal",
+    description: "Premium spatial guidance hub and freshman survival portal for Amrita Amaravati featuring interactive 3D compass layouts, responsive bento grids, and GPA simulators.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Motion"],
+    gradient: "from-orange-500/10 to-amber-500/10",
+    glowColor: "rgba(249, 115, 22, 0.15)",
+    icon: <Compass className="w-6 h-6 text-orange-400" />,
+    github: "https://github.com/uday0438/Amaravathi.git",
+    demo: "https://amaravathi.vercel.app/",
+    thumbnailGradient: "from-orange-600 via-amber-950 to-slate-950",
+    image: "/campus-compass.png",
+    details: {
+      challenge: "University freshers face informational bottlenecks, confusion over strict 75% attendance/CIA policies, and anxiety finding resources across scattered, disconnected platforms.",
+      solution: "Developed Campus Compass, a premium spatial orientation hub. It features a responsive tilting 3D compass, bento grids detailing campus life, an interactive SGPA/CGPA marks calculator, and a vinyl audio player.",
+      results: [
+        "High-fidelity glassmorphic bento interfaces for multi-modal information delivery",
+        "Dynamic SGPA & CGPA simulator mapping marks to projected semester GPAs",
+        "Embedded HTML5 vinyl audio player with soundwave visualizers",
+        "Optimized React 19 / Vite 6 rendering compiling in under 4.5 seconds"
       ]
     }
   }
