@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
       }
 
       // Update active section
-      const sections = ['home', 'projects', 'certifications', 'about', 'achievements', 'experience', 'contact'];
+      const sections = ['home', 'projects', 'experience', 'certifications', 'about', 'achievements', 'journey', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -72,10 +72,11 @@ const Navbar: React.FC = () => {
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'projects', label: 'Projects' },
+    { id: 'experience', label: 'Experience' },
     { id: 'certifications', label: 'Certificates' },
     { id: 'about', label: 'About' },
     { id: 'achievements', label: 'Achievements' },
-    { id: 'experience', label: 'Experience' },
+    { id: 'journey', label: 'Journey' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -96,35 +97,67 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Floating Navbar Container */}
-      <div className="fixed top-6 left-0 right-0 z-[60] flex justify-center px-4 pointer-events-none">
-        
-        {/* Soft Ambient Glow Behind Navbar */}
-        <div 
-          className="absolute h-[62px] w-[95%] max-w-[920px] rounded-full blur-[20px] bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10 -z-10 transition-opacity duration-500" 
-          style={{ opacity: isScrolled ? 1 : 0.4 }}
-        />
+      {/* Top Right Controls (Fixed, outside floating navbar) */}
+      <div className="fixed top-6 right-6 md:right-[1in] z-[60] h-[58px] flex items-center gap-3">
+        {/* Resume Button */}
+        <a
+          href="/resume.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-[var(--border-color)] hover:border-blue-500/50 bg-[var(--nav-bg)] backdrop-blur-[24px] hover:bg-[var(--chip-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all text-[10px] font-extrabold uppercase tracking-wider shadow-sm"
+        >
+          <span>Resume</span>
+          <ArrowUpRight size={12} className="opacity-60" />
+        </a>
 
+        {/* Theme Toggle */}
+        <button
+          onClick={toggleTheme}
+          className="w-8.5 h-8.5 flex items-center justify-center rounded-full border border-[var(--border-color)] hover:border-blue-500/50 bg-[var(--nav-bg)] backdrop-blur-[24px] hover:bg-[var(--chip-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all shadow-sm"
+          aria-label="Toggle dark mode"
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={isDark ? 'moon' : 'sun'}
+              initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
+              animate={{ rotate: 0, opacity: 1, scale: 1 }}
+              exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
+              transition={{ duration: 0.2 }}
+            >
+              {isDark ? <Sun size={14} /> : <Moon size={14} />}
+            </motion.div>
+          </AnimatePresence>
+        </button>
+      </div>
+
+      {/* Floating Navbar Container */}
+      <div className="fixed top-6 left-0 right-0 z-[50] flex justify-center px-4 pointer-events-none">
+        
         <motion.nav
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className={`pointer-events-auto flex items-center justify-between h-[58px] w-[95%] max-w-[920px] px-6 rounded-full border border-[var(--border-color)] transition-all duration-500 bg-[var(--nav-bg)] backdrop-blur-[24px] ${
+          className={`pointer-events-auto flex items-center justify-center h-[58px] rounded-full border border-[var(--border-color)] transition-all duration-500 bg-[var(--nav-bg)] backdrop-blur-[24px] ${
             isScrolled 
               ? 'shadow-[0_0_40px_rgba(80,120,255,0.18)] border-[var(--border-color)] bg-[var(--nav-bg)]' 
               : 'shadow-[0_0_40px_rgba(80,120,255,0.1)]'
-          }`}
+          } w-14 px-3 xl:w-fit xl:px-4 relative`}
           style={{
             willChange: 'transform, opacity, box-shadow',
           }}
         >
+          {/* Soft Ambient Glow Inside Navbar */}
+          <div 
+            className="absolute inset-0 rounded-full blur-[20px] bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10 -z-10 transition-opacity duration-500 pointer-events-none" 
+            style={{ opacity: isScrolled ? 1 : 0.4 }}
+          />
           {/* Desktop Nav Items */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-0.5">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative px-3.5 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-wider transition-all duration-300 ${
+                className={`relative px-2.5 py-1.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider transition-all duration-300 ${
                   activeSection === item.id
                     ? 'text-white'
                     : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
@@ -142,47 +175,14 @@ const Navbar: React.FC = () => {
             ))}
           </div>
 
-          {/* Controls & CTA */}
-          <div className="flex items-center gap-3">
-            {/* Resume Button */}
-            <a
-              href="/resume.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-[var(--border-color)] hover:border-blue-500/50 bg-[var(--chip-bg)] hover:bg-[var(--chip-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all text-[11px] font-semibold uppercase tracking-wider"
-            >
-              <span>Resume</span>
-              <ArrowUpRight size={12} className="opacity-60" />
-            </a>
-
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="w-8.5 h-8.5 flex items-center justify-center rounded-full border border-[var(--border-color)] hover:border-blue-500/50 bg-[var(--chip-bg)] hover:bg-[var(--chip-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all"
-              aria-label="Toggle dark mode"
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={isDark ? 'moon' : 'sun'}
-                  initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
-                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                  exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {isDark ? <Sun size={14} /> : <Moon size={14} />}
-                </motion.div>
-              </AnimatePresence>
-            </button>
-
-            {/* Mobile Burger Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden w-8.5 h-8.5 flex items-center justify-center rounded-full border border-[var(--border-color)] bg-[var(--chip-bg)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X size={15} /> : <Menu size={15} />}
-            </button>
-          </div>
+          {/* Mobile Burger Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="xl:hidden w-8.5 h-8.5 flex items-center justify-center rounded-full border border-[var(--border-color)] bg-[var(--chip-bg)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X size={15} /> : <Menu size={15} />}
+          </button>
         </motion.nav>
       </div>
 
@@ -193,7 +193,7 @@ const Navbar: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 lg:hidden"
+            className="fixed inset-0 z-50 xl:hidden"
           >
             {/* Dark Blur Overlay */}
             <motion.div

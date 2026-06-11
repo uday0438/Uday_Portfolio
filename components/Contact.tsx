@@ -53,7 +53,7 @@ const Contact: React.FC = () => {
       className="pt-24 pb-12 px-6 md:px-12 bg-[var(--bg-secondary)] relative border-t border-[var(--border-color)]"
     >
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-5xl md:text-6xl font-serif text-[var(--text-primary)] mb-4">Stay connected</h2>
+        <h2 className="text-4xl md:text-5xl font-serif text-[var(--text-primary)] mb-4">Stay connected</h2>
         <a href={`mailto:${email}`} className="text-lg text-[var(--text-secondary)] hover:text-blue-500 transition-colors">
           {email}
         </a>

@@ -4,6 +4,7 @@ import Intro from './components/Intro';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
+import Experience from './components/Experience';
 import Certifications from './components/Certifications';
 import About from './components/About';
 import Achievements from './components/Achievements';
@@ -71,6 +72,9 @@ const App: React.FC = () => {
           <section id="projects">
             <Projects />
           </section>
+          <section id="experience">
+            <Experience />
+          </section>
           <section id="certifications">
             <Certifications />
           </section>
@@ -80,7 +84,7 @@ const App: React.FC = () => {
           <section id="achievements">
             <Achievements />
           </section>
-          <section id="experience">
+          <section id="journey">
             <Timeline />
           </section>
           <section id="contact">

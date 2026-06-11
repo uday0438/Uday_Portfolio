@@ -38,24 +38,6 @@ const timelineData: TimelineItem[] = [
         description: "Graduated in Electronics and Communication Engineering with a focus on digital electronics, VLSI design, and embedded systems.",
         icon: <GraduationCap className="w-5 h-5" />,
         color: "from-blue-500 to-blue-600",
-    },
-    {
-        year: "May-Jul 2025",
-        title: "IoT Internship — APSCHE",
-        subtitle: "Council for Skills and Competencies",
-        description: "Gained industry exposure in embedded systems and IoT development through APSCHE's skill council.",
-        icon: <Briefcase className="w-5 h-5" />,
-        color: "from-green-500 to-emerald-500",
-        certificateImage: "/certificates/apsche_iot.png",
-    },
-    {
-        year: "Dec 2025 - Mar 2026",
-        title: "INTERN – Aaviza Electronics",
-        subtitle: "Wiring Harness & Electromechanical Assemblies",
-        description: "• Gained hands-on experience in wiring harness assembly, cable routing, and electromechanical integration for industrial electronic systems.\n• Performed assembly testing, continuity checks, and quality inspection while ensuring compliance with industrial safety standards.\n• Developed practical knowledge in electrical and electronic components, production workflows, and troubleshooting methodologies.",
-        icon: <Briefcase className="w-5 h-5" />,
-        color: "from-indigo-500 to-violet-500",
-        certificateImage: "/certificates/aaviza_certificate.png",
     }
 ];
 
@@ -142,16 +124,16 @@ const Timeline: React.FC = () => {
         <div className="py-32 px-6 md:px-12 max-w-[1400px] mx-auto relative">
             <div className="mb-24 text-center md:text-left flex flex-col items-center md:items-start">
                 <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-cyan-600 dark:text-cyan-400 mb-4 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
-                    My Milestone Timeline
+                    Academic Journey
                 </span>
                 <h2 
                     style={{ color: isDark ? '#ffffff' : '#0f172a' }}
-                    className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none select-none font-sans"
+                    className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none select-none font-sans"
                 >
-                    Experience & Journey
+                    Journey & Education
                 </h2>
                 <p className="mt-6 text-base md:text-lg text-[var(--text-secondary)] max-w-xl leading-relaxed font-medium">
-                    My path from student to aspiring design engineer.
+                    My educational milestones and academic background.
                 </p>
             </div>
 

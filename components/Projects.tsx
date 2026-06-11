@@ -1,6 +1,6 @@
 import React, { useRef, MouseEvent, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useInView, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Cpu, Wifi, Droplets, Eye, Leaf, Sprout, ShoppingBag, X, CheckCircle2, AlertCircle, Lightbulb, Siren, Compass } from 'lucide-react';
+import { ExternalLink, Github, Cpu, Wifi, Droplets, Eye, Leaf, Sprout, ShoppingBag, X, CheckCircle2, AlertCircle, Lightbulb, Siren, Compass, Code } from 'lucide-react';
 import { useTheme } from '../App';
 
 interface Project {
@@ -496,6 +496,9 @@ const Projects: React.FC = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true });
 
+  const hardwareProjects = projects.filter(p => [1, 2, 3, 4, 9, 12].includes(p.id));
+  const softwareProjects = projects.filter(p => [5, 7, 10, 11, 13, 14].includes(p.id));
+
   return (
     <div className="py-32 px-6 md:px-12 max-w-[1400px] mx-auto relative">
       
@@ -509,7 +512,7 @@ const Projects: React.FC = () => {
         </span>
         <h2 
           style={{ color: isDark ? '#ffffff' : '#0f172a' }}
-          className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none select-none font-sans"
+          className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none select-none font-sans"
         >
           Projects
         </h2>
@@ -518,15 +521,50 @@ const Projects: React.FC = () => {
         </p>
       </div>
 
-      {/* Staggered Card Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {projects.map((project, index) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            index={index}
-          />
-        ))}
+      {/* Section 1: Hardware & Embedded Systems Projects */}
+      <div className="mb-24">
+        <div className="flex items-center gap-3 mb-12 pb-4 border-b border-[var(--border-color)] dark:border-white/[0.06] justify-center md:justify-start">
+          <Cpu className="w-7 h-7 text-blue-500 dark:text-blue-400 animate-pulse" />
+          <h3 
+            style={{ color: isDark ? '#ffffff' : '#0f172a' }}
+            className="text-2xl md:text-3xl font-black uppercase tracking-tight font-sans"
+          >
+            Hardware & Embedded Systems
+          </h3>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {hardwareProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Section 2: Software & Web Development Projects */}
+      <div>
+        <div className="flex items-center gap-3 mb-12 pb-4 border-b border-[var(--border-color)] dark:border-white/[0.06] justify-center md:justify-start">
+          <Code className="w-7 h-7 text-indigo-500 dark:text-indigo-400" />
+          <h3 
+            style={{ color: isDark ? '#ffffff' : '#0f172a' }}
+            className="text-2xl md:text-3xl font-black uppercase tracking-tight font-sans"
+          >
+            Software & Web Development
+          </h3>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {softwareProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

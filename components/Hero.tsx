@@ -7,6 +7,7 @@ const roles = [
   "VLSI Design Enthusiast",
   "Circuit Design Expert",
   "Hardware Architect",
+  "Vibe Coder",
 ];
 
 const Hero: React.FC = () => {

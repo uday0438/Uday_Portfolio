@@ -234,7 +234,7 @@ const Achievements: React.FC = () => {
                 </span>
                 <h2 
                     style={{ color: isDark ? '#ffffff' : '#0f172a' }}
-                    className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none select-none font-sans"
+                    className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none select-none font-sans"
                 >
                     Achievements
                 </h2>
