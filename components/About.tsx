@@ -10,9 +10,9 @@ const About: React.FC = () => {
   const skillsRef = useRef<HTMLDivElement>(null);
   const skillsInView = useInView(skillsRef, { once: true, margin: "-50px" });
 
-  const technicalSkills = ['Embedded Systems', 'VLSI Design', 'Soldering', 'Digital Electronics', 'Automotive Electronics', 'PCB Design', 'Arduino', 'Circuit Design'];
-  const programmingLangs = ['Python', 'C', 'HTML/CSS', 'JavaScript'];
-  const softwareTools = ['OrCAD', 'Keil', 'MATLAB', 'ArduinoIDE', 'Proteus', 'ModelSim', 'AutoCAD'];
+  const technicalSkills = ['Embedded Systems', 'Automotive Electronics', 'Digital Electronics', 'PCB Design', 'Circuit Design', 'VLSI Design', 'Soldering', 'Wiring Harness Assembly', 'Electromechanical Integration', 'Quality Assurance', 'Arduino', 'ESP32', 'Raspberry Pi', 'IoT Systems'];
+  const programmingLangs = ['C', 'Embedded C', 'Verilog', 'Python (Basic)'];
+  const softwareTools = ['OrCAD', 'Keil uVision', 'MATLAB', 'Proteus', 'ModelSim', 'AutoCAD', 'Arduino IDE'];
 
   const SkillChip: React.FC<{ skill: string; delay: number; variant?: 'default' | 'accent' | 'outline' }> = ({ skill, delay, variant = 'default' }) => {
     const baseClasses = "px-5 py-2.5 rounded-xl text-sm font-semibold cursor-default transition-all duration-300";
@@ -73,10 +73,13 @@ const About: React.FC = () => {
           <div className="flex-1 space-y-8">
             <div className="space-y-4 font-homemade tracking-wide">
               <p className="text-xl text-[var(--text-secondary)] leading-relaxed font-medium">
-                I am a results-driven <span className="text-[var(--text-primary)] font-bold decoration-blue-500/30 underline decoration-4 underline-offset-4">Electronics and Communication Engineering</span> graduate from <span className="font-semibold text-[var(--text-primary)]">Kuppam Engineering College</span> (GPA: 7.9) with a strong foundation in automotive electronics, embedded systems, and industrial automation. I have a focused commitment to smart mobility solutions and hardware-software integration.
+                I am an <span className="text-[var(--text-primary)] font-bold decoration-blue-500/30 underline decoration-4 underline-offset-4">Electronics and Communication Engineering</span> graduate from <span className="font-semibold text-[var(--text-primary)]">Kuppam Engineering College</span> (CGPA: 8.0), driven by a passion for building technology that creates real-world impact. My expertise spans automotive electronics, embedded systems, industrial automation, and intelligent mobility solutions, with a strong focus on transforming concepts into functional products through rapid prototyping, hardware-software integration, and AI-assisted development.
               </p>
               <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                My work centers on rapid prototyping, AI-assisted development, and connected systems. Through my electromechanical assembly and testing internship at <span className="font-semibold text-[var(--text-primary)]">Aaviza Electronics</span>, national hackathons, and research, I am dedicated to bridging the gap between theoretical electrical concepts and high-impact, real-world engineering solutions.
+                Through hands-on experience at <span className="font-semibold text-[var(--text-primary)]">Aaviza Electronics</span>, national-level hackathons, and innovation-driven projects, I have developed a practical engineering mindset that combines technical depth, creativity, and execution. I thrive at the intersection of hardware, software, and emerging technologies, where ideas evolve into scalable and user-centric solutions.
+              </p>
+              <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
+                Currently, I am focused on leveraging AI, IoT, and next-generation mobility technologies to engineer smarter, more connected systems that address real-world challenges and shape the future of innovation.
               </p>
             </div>
 

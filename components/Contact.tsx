@@ -122,7 +122,7 @@ const Contact: React.FC = () => {
         <div className="mt-12 space-y-2 text-[var(--text-muted)] text-sm">
           <div className="flex items-center justify-center gap-2">
             <MapPin size={16} />
-            <span>Dharmavaram, 515671, AP, India</span>
+            <span>Dharmavaram, Andhra Pradesh, India-515671</span>
           </div>
           <div className="flex items-center justify-center gap-2">
             <Phone size={16} />

@@ -16,12 +16,20 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
     {
-        year: "2015-2020",
-        title: "Secondary School Certificate (SSC)",
-        subtitle: "B.S.R Municipal High school, Dharmavaram — GPA: 7.7",
-        description: "Completed secondary education with a strong foundation in science and mathematics.",
+        year: "2026 – Present",
+        title: "M.Tech in VLSI Design",
+        subtitle: "Kuppam Engineering College — Pursuing",
+        description: "Focused on semiconductor technologies, digital IC design, VLSI architectures, and next-generation chip design.",
         icon: <GraduationCap className="w-5 h-5" />,
-        color: "from-gray-500 to-slate-600",
+        color: "from-indigo-500 to-indigo-600",
+    },
+    {
+        year: "2022-2026",
+        title: "B.Tech in ECE",
+        subtitle: "Kuppam Engineering College (JNTUA) — CGPA: 8.0",
+        description: "Graduated in Electronics and Communication Engineering with a focus on digital electronics, VLSI design, and embedded systems.",
+        icon: <GraduationCap className="w-5 h-5" />,
+        color: "from-blue-500 to-blue-600",
     },
     {
         year: "2020-2022",
@@ -32,12 +40,12 @@ const timelineData: TimelineItem[] = [
         color: "from-slate-500 to-gray-600",
     },
     {
-        year: "2022-2026",
-        title: "B.Tech in ECE",
-        subtitle: "Kuppam Engineering College (JNTUA) — CGPA: 7.9",
-        description: "Graduated in Electronics and Communication Engineering with a focus on digital electronics, VLSI design, and embedded systems.",
+        year: "2015-2020",
+        title: "Secondary School Certificate (SSC)",
+        subtitle: "B.S.R Municipal High school, Dharmavaram — GPA: 7.7",
+        description: "Completed secondary education with a strong foundation in science and mathematics.",
         icon: <GraduationCap className="w-5 h-5" />,
-        color: "from-blue-500 to-blue-600",
+        color: "from-gray-500 to-slate-600",
     }
 ];
 

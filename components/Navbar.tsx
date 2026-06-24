@@ -110,23 +110,61 @@ const Navbar: React.FC = () => {
           <ArrowUpRight size={12} className="opacity-60" />
         </a>
 
-        {/* Theme Toggle */}
+        {/* Theme Toggle (Stretchy Toggle Switch) */}
         <button
           onClick={toggleTheme}
-          className="w-8.5 h-8.5 flex items-center justify-center rounded-full border border-[var(--border-color)] hover:border-blue-500/50 bg-[var(--nav-bg)] backdrop-blur-[24px] hover:bg-[var(--chip-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all shadow-sm"
-          aria-label="Toggle dark mode"
+          className={`w-14 h-8 rounded-full p-1 relative flex items-center border transition-all duration-500 focus:outline-none cursor-pointer ${
+            isDark 
+              ? 'bg-zinc-950/80 border-zinc-800/80 shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]' 
+              : 'bg-orange-50/80 border-orange-200/80 shadow-[inset_0_2px_4px_rgba(249,115,22,0.06)]'
+          }`}
+          aria-label="Toggle theme"
         >
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={isDark ? 'moon' : 'sun'}
-              initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
-              animate={{ rotate: 0, opacity: 1, scale: 1 }}
-              exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
-              transition={{ duration: 0.2 }}
-            >
-              {isDark ? <Sun size={14} /> : <Moon size={14} />}
-            </motion.div>
-          </AnimatePresence>
+          {/* Inner glow backdrop */}
+          <div 
+            className={`absolute inset-0 rounded-full transition-opacity duration-500 pointer-events-none ${
+              isDark 
+                ? 'bg-indigo-500/5 opacity-100' 
+                : 'bg-orange-500/5 opacity-100'
+            }`} 
+          />
+          
+          <motion.div
+            animate={isDark ? {
+              x: [0, 8, 24],
+              width: [24, 38, 24],
+            } : {
+              x: [24, 8, 0],
+              width: [24, 38, 24],
+            }}
+            transition={{
+              duration: 0.2,
+              ease: "easeInOut"
+            }}
+            className={`h-6 rounded-full flex items-center justify-center shadow-[0_2px_6px_rgba(0,0,0,0.2)] relative ${
+              isDark 
+                ? 'bg-gradient-to-tr from-indigo-500 via-indigo-600 to-violet-500 text-white' 
+                : 'bg-gradient-to-tr from-orange-500 via-orange-600 to-amber-500 text-white'
+            }`}
+            style={{ width: 24 }}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={isDark ? 'moon' : 'sun'}
+                initial={{ opacity: 0, scale: 0.6, rotate: -45 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                exit={{ opacity: 0, scale: 0.6, rotate: 45 }}
+                transition={{ duration: 0.08 }}
+                className="flex items-center justify-center"
+              >
+                {isDark ? (
+                  <Moon size={11} className="text-indigo-100 fill-indigo-100" />
+                ) : (
+                  <Sun size={11} className="text-orange-100 fill-orange-100" />
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
         </button>
       </div>
 

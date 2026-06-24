@@ -25,9 +25,9 @@ const experiences: ExperienceItem[] = [
         company: "Aaviza Electronics",
         department: "Wiring Harness & Electromechanical Assemblies",
         description: [
-            "Gained hands-on experience in wiring harness assembly, cable routing, and electromechanical integration for industrial electronic systems.",
-            "Performed assembly testing, continuity checks, and quality inspection while ensuring compliance with industrial safety standards.",
-            "Developed practical knowledge in electrical and electronic components, production workflows, and troubleshooting methodologies."
+            "Gained hands-on experience in wiring harness assembly, cable routing, and electromechanical integration for industrial electronic systems, ensuring compliance with manufacturing and quality standards.",
+            "Performed continuity testing, assembly verification, and quality inspections on 100+ assemblies, identifying defects and ensuring adherence to quality and safety standards.",
+            "Assisted in assembly and testing of electromechanical systems, ensuring compliance with specifications and standards."
         ],
         gradient: "from-indigo-500/10 to-violet-500/10",
         glowColor: "rgba(99, 102, 241, 0.15)",
