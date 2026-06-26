@@ -40,8 +40,6 @@ const Contact: React.FC = () => {
   const socialLinks = [
     { Icon: Github, href: 'https://github.com/uday0438', label: 'GitHub' },
     { Icon: Linkedin, href: 'https://www.linkedin.com/in/kalle-uday-bhaskar/', label: 'LinkedIn' },
-    { Icon: Instagram, href: 'https://instagram.com/', label: 'Instagram' },
-    { Icon: Send, href: 'https://t.me/', label: 'Telegram' },
   ];
 
   return (
