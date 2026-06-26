@@ -5,6 +5,9 @@ import { motion, useInView } from 'framer-motion';
 const Contact: React.FC = () => {
   const [time, setTime] = useState(new Date());
   const [copied, setCopied] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
@@ -33,6 +36,23 @@ const Contact: React.FC = () => {
     }
   };
 
+  const handleSendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!userEmail || !subject || !message) {
+      alert("Please fill in all fields (Email, Subject, and Message) before sending.");
+      return;
+    }
+    
+    // Construct the email body
+    const emailBody = `From: ${userEmail}\n\nMessage:\n${message}`;
+    
+    // Construct mailto link
+    const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open in native mail client
+    window.location.href = mailtoUrl;
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -59,25 +79,58 @@ const Contact: React.FC = () => {
           Crafted with creativity and passion. Let's stay connected — reach out anytime!
         </p>
 
-        {/* Email & Subject inputs */}
-        <div className="mt-12 bg-[var(--bg-primary)] p-2 rounded-2xl flex flex-col md:flex-row gap-2 max-w-2xl mx-auto border border-[var(--border-color)]">
-          <input
-            type="email"
-            placeholder="Your email"
-            className="flex-1 px-6 py-4 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-color)] outline-none focus:ring-2 focus:ring-blue-400/50 text-[var(--text-primary)] placeholder-[var(--text-muted)]"
-          />
-          <input
-            type="text"
-            placeholder="Subject"
-            className="flex-1 px-6 py-4 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-color)] outline-none focus:ring-2 focus:ring-blue-400/50 text-[var(--text-primary)] placeholder-[var(--text-muted)]"
-          />
-        </div>
+        {/* Email, Subject & Message inputs (Interactive Form) */}
+        <form onSubmit={handleSendEmail} className="mt-12 flex flex-col gap-4 max-w-2xl mx-auto text-left">
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex-1 flex flex-col gap-1.5">
+              <label className="text-xs font-bold uppercase tracking-wider text-[var(--text-secondary)]">Your Email</label>
+              <input
+                type="email"
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
+                placeholder="name@example.com"
+                className="px-6 py-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-color)] outline-none focus:ring-2 focus:ring-blue-400/50 text-[var(--text-primary)] placeholder-[var(--text-muted)] transition-all text-sm"
+                required
+              />
+            </div>
+            <div className="flex-1 flex flex-col gap-1.5">
+              <label className="text-xs font-bold uppercase tracking-wider text-[var(--text-secondary)]">Subject</label>
+              <input
+                type="text"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                placeholder="How can I help you?"
+                className="px-6 py-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-color)] outline-none focus:ring-2 focus:ring-blue-400/50 text-[var(--text-primary)] placeholder-[var(--text-muted)] transition-all text-sm"
+                required
+              />
+            </div>
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold uppercase tracking-wider text-[var(--text-secondary)]">Your Message</label>
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Type your message here..."
+              rows={4}
+              className="px-6 py-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-color)] outline-none focus:ring-2 focus:ring-blue-400/50 text-[var(--text-primary)] placeholder-[var(--text-muted)] resize-none transition-all text-sm"
+              required
+            />
+          </div>
+          
+          <button
+            type="submit"
+            className="mt-2 w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/20 hover:scale-[1.01] transition-all flex items-center justify-center gap-2 cursor-pointer text-sm"
+          >
+            <Send size={16} />
+            Send Message
+          </button>
+        </form>
 
         {/* Action buttons */}
         <div className="mt-6 flex flex-wrap justify-center gap-4">
           <button
             onClick={handleCopyEmail}
-            className="px-6 py-3 bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-xl text-[var(--text-primary)] font-medium hover:border-blue-400 hover:shadow-md flex items-center gap-2 transition-all"
+            className="px-6 py-3 bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-xl text-[var(--text-primary)] font-medium hover:border-blue-400 hover:shadow-md flex items-center gap-2 transition-all cursor-pointer"
           >
             {copied ? <Check size={18} className="text-green-500" /> : <Copy size={18} />}
             {copied ? 'Copied!' : 'Copy Email'}
@@ -89,14 +142,6 @@ const Contact: React.FC = () => {
             className="px-6 py-3 bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-xl text-[var(--text-primary)] font-medium hover:border-purple-400 hover:shadow-md flex items-center gap-2 transition-all"
           >
             <FileText size={18} /> View Resume
-          </a>
-          <a
-            href={`https://mail.google.com/mail/?view=cm&to=${email}&su=Hello%20Uday!`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105 transition-all"
-          >
-            Contact Now
           </a>
         </div>
 

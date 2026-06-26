@@ -16,7 +16,7 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
     {
-        year: "2026 – Present",
+        year: "2026 - Expected 2028",
         title: "M.Tech in VLSI Design",
         subtitle: "Kuppam Engineering College — Pursuing",
         description: "Focused on semiconductor technologies, digital IC design, VLSI architectures, and next-generation chip design.",
