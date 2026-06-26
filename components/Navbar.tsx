@@ -98,7 +98,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Top Right Controls (Fixed, outside floating navbar) */}
-      <div className="fixed top-6 right-6 md:right-[1in] z-[60] h-[58px] flex items-center gap-3">
+      <div className="fixed top-6 right-4 md:right-[0.8in] z-[60] h-[58px] flex items-center gap-3">
         {/* Resume Button */}
         <a
           href="/resume.html"

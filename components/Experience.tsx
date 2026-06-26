@@ -20,9 +20,9 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
     {
         id: 1,
-        period: "Dec 2025 - Mar 2026",
-        title: "INTERN",
-        company: "Aaviza Electronics",
+        period: "4 Months | Dec 2025 - Mar 2026",
+        title: "Intern",
+        company: "Aaviza Electronics Pvt Ltd | Ramamurthy Nagar, Bangalore",
         department: "Wiring Harness & Electromechanical Assemblies",
         description: [
             "Gained hands-on experience in wiring harness assembly, cable routing, and electromechanical integration for industrial electronic systems, ensuring compliance with manufacturing and quality standards.",

@@ -428,9 +428,26 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
           </h3>
 
           {/* Description */}
-          <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-6 flex-1">
+          <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-4">
             {project.description}
           </p>
+
+          {/* Key Features */}
+          {project.details && project.details.results && (
+            <div className="mb-6">
+              <span className="text-[9px] uppercase tracking-wider font-extrabold text-blue-600 dark:text-blue-400 block mb-2">
+                Key Features
+              </span>
+              <ul className="text-[11px] text-[var(--text-secondary)] space-y-1.5 pl-0 list-none">
+                {project.details.results.slice(0, 2).map((result, idx) => (
+                  <li key={idx} className="flex items-start gap-1.5 leading-normal">
+                    <span className="text-blue-500/60 dark:text-blue-400/60 font-bold">•</span>
+                    <span className="line-clamp-2">{result}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Card Footer tags and links */}
           <div className="flex flex-wrap items-center justify-between gap-3 mt-auto">
